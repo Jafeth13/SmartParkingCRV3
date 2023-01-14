@@ -1,0 +1,46 @@
+<app-navbar></app-navbar>
+
+<section class="page-section" id="ParkingLots">
+    <div class="container">
+        <div class="col-md-offset-1 col-md-4 col-sm-12" id="log">
+            <mat-card class="example-card">
+
+                <div class="margin" >
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+            <div  *ngIf="parkingL" class="parking"  class="login-form">
+               
+                    <h2 class="text-center mb-4">Parking Lot</h2>
+                    <input [(ngModel)]="parkingL.idParking_Lot" type="text" name="idPL"  hidden>
+                    <input  [(ngModel)]="parkingL.name" type="text" name="namePL"  class="form-control rounded-left" placeholder="Name" required="">
+                    <input [(ngModel)]="parkingL.capacitySize" type="text" name="capacityPL" class="form-control" placeholder="Capacity"  required="">
+                    <select [(ngModel)]="parkingL.province" class="form-control" id="provincePL" >
+                        <option value="Cartago">Cartago</option>
+                        <option value="San Jose">San Jose</option>
+                        <option value="Alajuela">Alajuela</option>
+                        <option value="Heredia">Heredia</option>
+                        <option value="Puntarenas">Puntarenas</option>
+                        <option value="Guanacaste">Guanacaste</option>
+                        <option value="Limon">Limon</option>
+                    </select>
+                    <input [(ngModel)]="parkingL.city" name="cityPL" class="form-control" placeholder="City"  required="">
+                    <input [(ngModel)]="parkingL.district" type="text" name="districtPL" class="form-control"  placeholder="District" required="">
+                    <button class="form-control btn btn-primary rounded submit px-3"  id="form-submit" (click)="update()">Update parking</button>
+
+                    <label id="result"></label>
+              
+
+            </div>
+        </div>                
+    </mat-card> 
+        </div>
+    </div>
+    <div class="example-button-container">
+        <button mat-icon-button="Link"  routerLink="/PrincipalAdmin" aria-label="Example icon button with a home icon">
+            <mat-icon>home</mat-icon>
+          </button>
+        </div>
+</section>
+

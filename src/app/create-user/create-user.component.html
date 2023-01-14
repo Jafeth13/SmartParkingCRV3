@@ -1,0 +1,46 @@
+<app-navbar> </app-navbar>
+
+<section class="page-section" id="adminRegister">
+    <div class="container">
+        <div class="col-md-offset-1 col-md-4 col-sm-12" id="log">
+            <br>
+            <br>
+            <br>
+            <div class="entry-formRate">
+                <form action="" id="userRegister-entry-form">
+                    <h2>Register</h2>
+                    <input  [(ngModel)]="userData.id_User" type="text"  hidden>
+
+                    <input  [(ngModel)]="userData.identification" type="text" autocomplete="off" name="identification_Admin" id="identification_Admin" class="form-control rounded-left" placeholder="Identification" required="">
+
+                    <input  [(ngModel)]="userData.name"type="text" autocomplete="off" name="name_Admin" id="name_Admin" class="form-control rounded-left" placeholder="Name" required="">
+
+                    <input  [(ngModel)]="userData.last_Name"type="text" autocomplete="off" name="lastName_Admin" id="lastName_Admin" class="form-control rounded-left" placeholder="LastName" required="">
+
+                    <input  [(ngModel)]="userData.tel_number"type="text" autocomplete="off" name="cel_Admin" id="cel_Admin" class="form-control rounded-left" placeholder="Telephone Number" required="">
+
+                    <input  [(ngModel)]="userData.email" type="email" autocomplete="off" name="email_Admin" id="email_Admin" class="form-control rounded-left" placeholder="Email address" required="">
+
+                    <input  [(ngModel)]="userData.password"type="password" autocomplete="off" name="password_Admin" id="password_Admin" class="form-control rounded-left" placeholder="Password" required="">
+
+                    <select  [(ngModel)]="userData.role.id_Role" class="form-control rounded-left" name="role_Admin" id="role_Admin">
+                        <option value=0 selected>Select your role</option>
+                        <option value=1 selected>Admin</option>
+                        <option value=2 selected>Operator</option>
+                        <option value=3 selected>Client</option>
+                    </select>
+
+                    <button class="submit-btn form-control" (click)="addUser()">Add</button>
+                </form>
+
+            </div>
+        </div>
+        
+    </div>
+    <div class="example-button-container">
+        <button mat-icon-button="Link"  routerLink="/PrincipalAdmin" aria-label="Example icon button with a home icon">
+            <mat-icon>home</mat-icon>
+          </button>
+        </div>
+</section>
+

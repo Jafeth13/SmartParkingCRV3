@@ -1,0 +1,79 @@
+
+<app-navbar></app-navbar>
+
+
+
+<div class="text-center">
+
+    <mat-tab-group mat-align-tabs="center">
+        <mat-tab label="Log In">
+
+            <section class="page-section" id="ParkingLots">
+                <div class="container">
+                    <div class="col-md-offset-1 col-md-4 col-sm-12" id="log">
+                        <mat-card class="example-card">
+            
+                            <div class="margin" >
+                                <br>
+                      
+                                <h3 class="text-center mb-4">Log In</h3>
+                                    <mat-divider></mat-divider>
+                                    <form [formGroup]="loginForm" (ngSubmit)="login()" #formDir="ngForm" id="user-form" class="login-form">
+                                        <div class="form-group">
+            
+                                            <input formControlName="email" type="email" autocomplete="off" name="emailLogin" id="emailLogin" class="form-control rounded-left" placeholder="Email address" required="true">
+            
+                                            <input formControlName="password" type="password" autocomplete="off" name="passwordLogin" id="passwordLogin" class="form-control rounded-left" placeholder="Password" required="true">
+            
+                                            <button class="form-control btn btn-primary rounded submit px-3" type="submit">Log In</button>
+                                        </div>
+                                    </form>
+                            </div>                
+                        </mat-card> 
+                    </div>
+                </div>
+            </section>
+
+        </mat-tab>
+        <mat-tab label="Sign In">
+
+            <section class="page-section">
+                <div class="container">
+                    <div class="col-md-offset-1 col-md-4 col-sm-12" id="log">
+                        <mat-card class="card">          
+                            <div class="margin" >
+                                <br>
+                      
+                                <h3 class="text-center mb-4">Sign In</h3>
+                                    <mat-divider></mat-divider>
+                                    <form [formGroup]="registerForm" (ngSubmit)="signIn()" #formDir="ngForm" id="user-form" class="login-form">
+                                        <div class="form-group">
+
+                                            <input formControlName="identification" type="text" autocomplete="off" class="form-control rounded-left" placeholder="Identification" required="true">
+
+                                            <input formControlName="name" type="text" autocomplete="off" class="form-control rounded-left" placeholder="Name" required="true">
+
+                                            <input formControlName="lastName" type="text" autocomplete="off" class="form-control rounded-left" placeholder="LastName" required="true">
+
+                                            <input formControlName="telNumber" type="text" autocomplete="off" class="form-control rounded-left" placeholder="Telephone" required="true">
+            
+                                            <input formControlName="email" type="email" autocomplete="off"  class="form-control rounded-left" placeholder="Email address" required="true">
+            
+                                            <input formControlName="password" type="password" autocomplete="off" class="form-control rounded-left" placeholder="Password" required="true">
+            
+                                            <button class="form-control btn btn-primary rounded submit px-3" type="submit">Sign In</button>
+                                        </div>
+                                    </form>
+                            </div>                
+                        </mat-card> 
+                    </div>
+                </div>
+            </section>
+
+        </mat-tab>
+
+    </mat-tab-group>
+    
+
+</div>
+

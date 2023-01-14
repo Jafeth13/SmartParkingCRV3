@@ -1,0 +1,31 @@
+<app-navbar></app-navbar>
+
+
+<section class="page-section" id="roleUpdate">
+    <div class="container">
+        <div class="col-md-offset-1 col-md-4 col-sm-12" id="log">
+
+            <mat-card class="example-card">
+
+                <div class="margin" >
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <h3 class="text-center mb-4">Update Rates</h3>
+                    <form action="" id="rate-type-update-form" class="login-form">
+                        <div *ngIf="rateTypeData" class="form-group">
+                            
+                            <input [(ngModel)]="rateTypeData.id_Rate_Type" type="text" autocomplete="off" name="idRateTypeUpdate" id="idRateTypeUpdate" hidden>
+                            <input [(ngModel)]="rateTypeData.booking_Time" type="text" autocomplete="off" name="amountUfdpdate" id="df" class="form-control" placeholder="booking_Time" required="" disabled="true">
+                        
+                            <input [(ngModel)]="rateTypeData.amount" type="text" autocomplete="off" name="amountUpdate" id="amountUpdate" class="form-control" placeholder="Amount" required="">
+
+                            <button class="form-control btn btn-primary rounded submit px-3" (click)="update()">Update</button>
+                        </div>
+                        </form>
+                </div>                
+            </mat-card>  
+        </div>
+    </div>
+</section>

@@ -1,0 +1,123 @@
+<app-navbar></app-navbar>
+
+
+<mat-stepper [linear]="false" #stepper>
+      <mat-step [stepControl]="firstFormGroup" [editable]="true">
+
+        <form [formGroup]="firstFormGroup">
+          <ng-template matStepLabel>Fill your information</ng-template>
+          <div>
+            <mat-form-field appearance="fill">
+                <mat-label>Select your vehicle</mat-label>
+                <mat-select id="selectReservation"formControlName="firstCtrl" [(ngModel)]="vehiId" required>
+                  <mat-option value="">Select a vehicle</mat-option>
+                  <mat-option *ngFor="let v of vehicle" [value]="v.vehicle.idVehicle">{{v.vehicle.licensePlate}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field appearance="fill">
+                <mat-label>Select your Time</mat-label>
+                <mat-select id="selectBook"formControlName="firstCtrl" [(ngModel)]="rateId" required>
+                  <mat-option *ngFor="let s of rateType" [value]="s.idRateType">{{s.bookingTime}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field appearance="fill">
+                <mat-label>Choose a date</mat-label>
+                <input id="dateTicket" matInput [matDatepicker]="picker" (dateInput)="selectDate('input', $event)" (dateChange)="selectDate('change', $event)"formControlName="firstCtrl" required>
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+          </div>
+
+          <div>
+            <mat-form-field appearance="fill">
+                <mat-label>Booking Time</mat-label>
+                <input id="time" matInput formControlName="firstCtrl" type="time" (change)="selectHour()" placeholder="Booking Time" required>
+              </mat-form-field>
+          </div>
+        
+          <div>
+            <button mat-button matStepperNext (click)="LoadSpotsByParking()">Next</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step>
+          <ng-template matStepLabel>Select your spot</ng-template>
+          <div id="container-info-spots" class="text-center">
+            <br> 
+            <button id="occupied-spot"></button>
+            <label class="label-spot">Occupied Spot</label>
+            <button id="inactive-spot"></button>
+            <label class="label-spot">Inactive Spot</label>
+            <button id="enabled-spot"></button>
+            <label class="label-spot">Active Spot</label>
+            <button id="reserved-spot"></button>
+            <label class="label-spot">Reserved Spot</label>
+        </div>
+          <div  class="text-center" id="spots-reservation">
+          </div>
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button (click)="getTicketInfo()" matStepperNext>Next</button>
+          </div>       
+      </mat-step>
+        <mat-step>
+          <form (ngSubmit)="addTicket()" #formDir="ngForm">
+        <ng-template matStepLabel>Done</ng-template>
+        <div>
+        <input  type="text" placeholder="Booking Time" hidden>
+            
+        </div>
+        <div>
+          <mat-form-field appearance="fill">
+              <mat-label>Parking Lot</mat-label>
+              <input matInput  [(ngModel)]="parkingName" id="Id_Parking_Ticket"  name="Parking_Ticket"type="text" placeholder="Parking Lot" [disabled]="true" >
+            </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field appearance="fill">
+              <mat-label>User</mat-label>
+              <input matInput [(ngModel)]="userName" id="Id_User_Ticket" name="User_Ticket"  type="text" placeholder="User" [disabled]="true">
+            </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field appearance="fill">
+              <mat-label>Spot</mat-label>
+              <input matInput [(ngModel)]="spotNumber"id="Id_Spot_Ticket" name="Spot_Ticket"  type="text" placeholder="Spot Number" [disabled]="true" >
+            </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field appearance="fill">
+              <mat-label>Vehicle</mat-label>
+              <input matInput [(ngModel)]="vehicleLicense" id="Id_Vehicle_Ticket" name="Vehicle_Ticket"  type="text" placeholder="Vehicle License Plate" [disabled]="true">
+            </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field appearance="fill">
+              <mat-label>Rate</mat-label>
+              <input matInput [(ngModel)]="rateTypeIn" id="Id_Rate_Ticket" name="Rate_Ticket" type="text" placeholder="Rate Type" [disabled]="true">
+            </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field appearance="fill">
+              <mat-label>Start Date</mat-label>
+              <input matInput [(ngModel)]="startDate"id="Id_StarDay_Ticket" name="StarDay_Ticket"  type="text" placeholder="Star Day/Hour" [disabled]="true">
+            </mat-form-field>
+           
+        </div>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button (click)="stepper.reset()">Buy</button>
+        </div>
+      
+    </form>
+  
+        
+ 
+      
+      </mat-step>
+    </mat-stepper>

@@ -1,0 +1,42 @@
+<app-navbar></app-navbar>
+
+<section class="page-section" id="vehicles">
+    <div class="container">
+      
+            <div class="col-md-offset-1 col-md-4 col-sm-12" id="log">
+
+                <div class="entry-form3">
+                    <form action="" id="vehicle-entry-form">
+                        <h2>Add your vehicle</h2>
+
+                        
+
+                        <input [(ngModel)]="vehicleData.licensePlate1" type="text" name="licencsePlate-form" id="licensePlate-form" class="form-control" placeholder="License Plate" required="">
+
+                        <input [(ngModel)]="vehicleData.color1" type="text" name="color-form" id="color-form" class="form-control" placeholder="Color" required="">
+
+                        <input [(ngModel)]="vehicleData.weight1" type="number" name="weight-form" id="weight-form" class="form-control" placeholder="Weight" required="">
+
+                        <input [(ngModel)]="vehicleData.brand1" type="text" name="brand-form" id="brand-form" class="form-control" placeholder="Brand" required="">
+
+                        <select [(ngModel)]="vehicleData.idType1" class="form-control without-margin" name="type-form" id="type-form">
+                            <option value=0 selected>Select the type of the vehicle</option>
+                            <option value=1 selected>Vehiculo Particular</option>
+                            <option value=2 selected>Vehiculo Carga</option>
+                            <option value=3 selected>Motocicleta</option>
+                            <option value=4 selected>Bicicleta</option>
+                            <option value=5 selected>Vehiculo Pesado</option>
+                        </select>
+
+                        <button class="submit-btn form-control" (click)="addVehicle()" id="form-submit-vehicle">Add Vehicle</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="example-button-container">
+            <button mat-icon-button="Link"  routerLink="/PrincipalClient" aria-label="Example icon button with a home icon" id="btnHomeVehicle">
+                <mat-icon>home</mat-icon>
+              </button>
+            </div>
+</section>
+

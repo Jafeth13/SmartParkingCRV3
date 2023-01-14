@@ -1,0 +1,59 @@
+<app-navbar> </app-navbar>
+<section class="page-section" id=spots>
+    <div class="container">
+
+        <div class="col-md-offset-1 col-md-4 col-sm-12" id="log">
+            <mat-card class="example-card">
+
+                <div class="margin">
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+
+                    <form action="" id="spot-entry-form" class="login-form">
+                        <h2>Update a Ticket</h2>
+                        <input [(ngModel)]="TicketData[0].idTicket" name="idSpot-form" class="form-control rounded-left"
+                            disabled>
+
+                        <input [(ngModel)]="TicketData[0].parkingLot.name" name="number-form"
+                            class="form-control rounded-left" disabled required="">
+
+                        <input [(ngModel)]="TicketData[0].spot.number" name="type-form"
+                            class="form-control rounded-left" disabled required="">
+
+
+                        <input [(ngModel)]="TicketData[0].user.name" name="slol" class="form-control rounded-left"
+                            disabled required="">
+
+                        <input [(ngModel)]="TicketData[0].rateType.amount" name="status-form"
+                            class="form-control rounded-left" disabled required="">
+
+
+                        <mat-label>Choose a date</mat-label>
+                        <input id="dateTicket" matInput [matDatepicker]="picker"
+                            (dateInput)="selectDate('input', $event)" (dateChange)="selectDate('change', $event)"
+                            formControlName="firstCtrl" required>
+                        <mat-hint>MM/DD/YYYY</mat-hint>
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+
+                        <mat-label>Booking Time</mat-label>
+                        <input id="time" matInput formControlName="firstCtrl" type="time" (change)="selectHour()"
+                            placeholder="Booking Time" required>
+
+                        <button class="form-control btn btn-primary rounded submit px-3"
+                            (click)="updateTicket()">update</button>
+
+                    </form>
+                </div>
+            </mat-card>
+
+        </div>
+    </div>
+    <div class="example-button-container">
+        <button mat-icon-button="Link" routerLink="/PrincipalClient" aria-label="Example icon button with a home icon">
+            <mat-icon>home</mat-icon>
+        </button>
+    </div>
+</section>

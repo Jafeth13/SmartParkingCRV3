@@ -1,0 +1,37 @@
+<app-navbar></app-navbar>
+
+<section class="page-section" id="ParkingLots">
+    <div class="container">
+        <div class="col-md-offset-1 col-md-4 col-sm-12" id="log">
+            <div class="entry-form4">
+               
+                    <h2>Parking Lot</h2>
+                    <input [(ngModel)]="parkingData.idParking_Lot" type="text" name="idPL"  hidden>
+                    <input  [(ngModel)]="parkingData.name" type="text" name="namePL"  class="form-control" placeholder="Name" required="">
+                    <input [(ngModel)]="parkingData.capacitySize" type="text" name="capacityPL" class="form-control" placeholder="Capacity"  required="">
+                    <select [(ngModel)]="parkingData.province" class="form-control" id="provincePL" >
+                        <option value="Cartago">Cartago</option>
+                        <option value="San Jose">San Jose</option>
+                        <option value="Alajuela">Alajuela</option>
+                        <option value="Heredia">Heredia</option>
+                        <option value="Puntarenas">Puntarenas</option>
+                        <option value="Guanacaste">Guanacaste</option>
+                        <option value="Limon">Limon</option>
+                    </select>
+                    <input [(ngModel)]="parkingData.city" name="cityPL" class="form-control" placeholder="City"  required="">
+                    <input [(ngModel)]="parkingData.district" type="text" name="districtPL" class="form-control"  placeholder="District" required="">
+                    <button class="submit-btn form-control" (click)="addParking()" id="form-submit">Add parking</button>
+
+                    <label id="result"></label>
+              
+
+            </div>
+        </div>
+    </div>
+<div class="example-button-container">
+    <button mat-icon-button="Link"  routerLink="/PrincipalAdmin" aria-label="Example icon button with a home icon">
+        <mat-icon>home</mat-icon>
+      </button>
+    </div>
+</section>
+

@@ -1,0 +1,39 @@
+<app-navbar> </app-navbar>
+<section class="page-section" id=spots>
+    <div class="container">
+        
+            <div class="col-md-offset-1 col-md-4 col-sm-12" id="log">
+                <div class="entry-formRate">
+                    <form action="" id="spot-entry-form">
+                        <h2>Add a spot</h2>
+                        <input [(ngModel)]="SpotData.id_Spot" type="text" name="idSpot-form" id="idSpot-form" hidden>
+
+                        <input [(ngModel)]="SpotData.number" type="number" name="number-form" id="number-form" class="form-control rounded-left" placeholder="Number" required="">
+
+                        <input [(ngModel)]="SpotData.type"  name="number-form" id="number-form" class="form-control rounded-left" placeholder="type" required="">
+                       
+                        <select [(ngModel)]="SpotData.vehicle.id_Vehicle"  class="form-control rounded-left" name="parking-spot-form" id="parking-spot-form">
+                            <option value="0" selected>Select the parking lot</option>
+                            <option [value]="item.id_Vehicle" *ngFor="let item of vehicle">{{item.license_Plate}}</option>
+                        </select>
+                          <input [(ngModel)]="SpotData.status"  name="number-form" id="number-form" class="form-control rounded-left" placeholder="status" required="">
+                         
+
+                        <select [(ngModel)]="SpotData.parking_lot.id_Parking_Lot"  class="form-control rounded-left" name="parking-spot-form" id="parking-spot-form">
+                            <option value="0" selected>Select the parking lot</option>
+                            <option [value]="item.id_Parking_Lot" *ngFor="let item of parkingSelectT">{{item.name}}</option>
+                        </select>
+
+                        <button  class="submit-btn form-control" (click)="addUSpot()" aria-label="Example icon button with a delete icon">
+                          Add  </button>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="example-button-container">
+            <button mat-icon-button="Link"  routerLink="/PrincipalAdmin" aria-label="Example icon button with a home icon">
+                <mat-icon>home</mat-icon>
+              </button>
+            </div>
+</section>
