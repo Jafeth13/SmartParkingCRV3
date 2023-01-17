@@ -155,7 +155,7 @@ export class HomeServiceService {
   }
 
   getRateTypeById(id:any):Observable<any>{
-    return  this.http.get(rateTypeEndpoint+'/getRateType/'+id, httpOptions);   
+    return  this.http.get('https://localhost:7186/rate/GetById?id='+id, httpOptions);   
   }
    
 //////////////////////////////////////////Spot//////////////////////////////////////////////
@@ -171,7 +171,7 @@ deleteSpot(id:number){
 }
 
 getSpotEdit(id:any):Observable<any>{
-  return  this.http.get(SpotEndpoint+'/getSpot/'+id, httpOptions);  
+  return  this.http.get('https://localhost:7186/spot/GetById?idSpot='+id, httpOptions);  
 }
 
 addSpot(SpotData:any){

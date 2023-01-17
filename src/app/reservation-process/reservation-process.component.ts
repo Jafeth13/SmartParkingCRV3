@@ -7,6 +7,7 @@ import { AuthServiceService } from '../auth-service.service';
 import { HomeServiceService } from '../services/home-service.service';
 import { UserServiceService } from '../services/user-service.service';
 import Swal from 'sweetalert2'
+import * as moment from 'moment';
 import { ThisReceiver } from '@angular/compiler';
 import { ParkingServiceService } from '../services/parking-service.service';
 import { CookieService } from 'ngx-cookie-service';
@@ -72,10 +73,10 @@ export class ReservationProcessComponent implements OnInit {
     console.log('user name es '+idU)
     console.log('rate type es '+this.rateTypeInfo.idRate_Type)
     console.log('star day '+this.startDate.toString())
-    this.TicketData={parking:this.route.snapshot.params['id_Parking_Lot'],spot:this.spotId,user:this.userId.id_User,
-    rate:this.rateTypeInfo.id_Rate_Type,star:this.startDate.toString(),end:''};
-    console.log(this.TicketData)
-    
+   // this.TicketData={parking:this.route.snapshot.params['id_Parking_Lot'],spot:this.spotId,user:this.userId.id_User,
+   // rate:this.rateTypeInfo.id_Rate_Type,star:this.startDate.toString(),end:''};
+   // console.log(this.TicketData)
+   /* 
     this.rest.ReservationTicket(this.TicketData).subscribe((result) => {
       Swal.fire(
         'Good job!',
@@ -92,7 +93,7 @@ export class ReservationProcessComponent implements OnInit {
         text: 'Something went wrong!'
       })
     });
-   
+   */
   }
   getTicketInfo(){
     if(this.arraySelectedSpots.length==0){
@@ -133,10 +134,11 @@ rutSpot(){
     console.log(data);
     this.spotEdit = data;
     this.spotNumber=this.spotEdit.number;
-    this.spotId=this.spotEdit.id_Spot;
+    this.spotId=this.spotEdit.id;
   });
 }
 rutRateType(){
+  console.log(this.rateId)
   this.rest.getRateTypeById(this.rateId).subscribe((data: {}) => {
     console.log(data);
     this.rateTypeInfo = data;
@@ -145,11 +147,12 @@ rutRateType(){
 }
 rutParkingLot(){
   const cookie: string = this.cookieService.get('token');
+  const usert = localStorage.getItem('name');
   this.restParking.getParking(this.route.snapshot.params['id_Parking_Lot'],cookie).subscribe((data: {}) => {
     console.log(data);
     this.parking = data;
     this.parkingName=this.parking.name;
-    this.userName=this.vehicle.name
+    this.userName=usert
     this.startDate=this.date+'T'+this.hour+':00.000Z';
     
   });
@@ -160,7 +163,7 @@ rutVehicle(){
   this.rest.getVehicleById(this.vehiId).subscribe((data: {}) => {
     console.log(data);
     this.vehicleData = data;
-    this.vehicleLicense=this.vehicleData.license_Plate;
+  //  this.vehicleLicense=this.vehicleData.licensePlate;
   });
 }
 
@@ -170,7 +173,7 @@ rutVehicle(){
 
 
 selectDate(type: string, event: MatDatepickerInputEvent<Date>){
- // this.date=moment(event.value).format('YYYY-MM-DD');
+  this.date=moment(event.value).format('YYYY-MM-DD');
 }
 selectHour(){
 this.hour=(<HTMLInputElement> document.getElementById("time")).value;
@@ -206,6 +209,7 @@ getKey(){
 
 
 LoadSpotsByParking() {
+  console.log(this.rateId)
           var count = 0;
           var spots = this.parkingSpotsData.length;
           var html = '<div>';
@@ -214,7 +218,7 @@ LoadSpotsByParking() {
           for(let i=0;i<this.parkingSpotsData.length;i++) {
 
               if (count < 3 && spots != 0) {
-                  html += '<button class="btn_spot2" type="button" value="' + this.parkingSpotsData[i].number + '" id="spot' + this.parkingSpotsData[i].id_Spot + '" >' + this.parkingSpotsData[i].number + '</button > ';
+                  html += '<button class="btn_spot2" type="button" value="' + this.parkingSpotsData[i].number + '" id="spot' + this.parkingSpotsData[i].id + '" >' + this.parkingSpotsData[i].number + '</button > ';
                   spots = spots - 1;
                   count = count + 1;
               }
@@ -227,7 +231,7 @@ LoadSpotsByParking() {
 
 
               }
-              this.arraySpots.push(this.parkingSpotsData[i].id_Spot);
+              this.arraySpots.push(this.parkingSpotsData[i].id);
 
 
 
@@ -242,36 +246,36 @@ LoadSpotsByParking() {
           if (this.parkingSpotsData.length != 0) {
               var avaSpot = 0;
               for(let i =0;i<this.parkingSpotsData.length;i++) {
-                (<HTMLButtonElement>document.getElementById("spot"+this.parkingSpotsData[i].id_Spot)).addEventListener('click', (event) => this.selectedButton(this.parkingSpotsData[i].id_Spot.toString()));
-                (<HTMLButtonElement>document.getElementById("spot" + this.parkingSpotsData[i].id_Spot)).style.color = '#000000';
-                  (<HTMLButtonElement>document.getElementById("spot" + this.parkingSpotsData[i].id_Spot)).style.padding = '7px 30px';
-                  (<HTMLButtonElement>document.getElementById("spot" + this.parkingSpotsData[i].id_Spot)).style.border = '2px';
-                  (<HTMLButtonElement>document.getElementById("spot" + this.parkingSpotsData[i].id_Spot)).style.fontSize = '14px';
-                  (<HTMLButtonElement>document.getElementById("spot" + this.parkingSpotsData[i].id_Spot)).style.borderRadius = '10px';
-                  (<HTMLButtonElement>document.getElementById("spot" + this.parkingSpotsData[i].id_Spot)).style.fontFamily = 'Arial';
-                  (<HTMLButtonElement>document.getElementById("spot" + this.parkingSpotsData[i].id_Spot)).style.fontWeight = '600';
-                  (<HTMLButtonElement>document.getElementById("spot" + this.parkingSpotsData[i].id_Spot)).style.marginRight = '50px';
-                  (<HTMLButtonElement>document.getElementById("spot" + this.parkingSpotsData[i].id_Spot)).style.marginLeft = '10px';
-                  (<HTMLButtonElement>document.getElementById("spot" + this.parkingSpotsData[i].id_Spot)).style.marginTop = '6px';
-                  (<HTMLButtonElement>document.getElementById("spot" + this.parkingSpotsData[i].id_Spot)).style.backgroundColor = '#d3d3d3';
+                (<HTMLButtonElement>document.getElementById("spot"+this.parkingSpotsData[i].id)).addEventListener('click', (event) => this.selectedButton(this.parkingSpotsData[i].id.toString()));
+                (<HTMLButtonElement>document.getElementById("spot" + this.parkingSpotsData[i].id)).style.color = '#000000';
+                  (<HTMLButtonElement>document.getElementById("spot" + this.parkingSpotsData[i].id)).style.padding = '7px 30px';
+                  (<HTMLButtonElement>document.getElementById("spot" + this.parkingSpotsData[i].id)).style.border = '2px';
+                  (<HTMLButtonElement>document.getElementById("spot" + this.parkingSpotsData[i].id)).style.fontSize = '14px';
+                  (<HTMLButtonElement>document.getElementById("spot" + this.parkingSpotsData[i].id)).style.borderRadius = '10px';
+                  (<HTMLButtonElement>document.getElementById("spot" + this.parkingSpotsData[i].id)).style.fontFamily = 'Arial';
+                  (<HTMLButtonElement>document.getElementById("spot" + this.parkingSpotsData[i].id)).style.fontWeight = '600';
+                  (<HTMLButtonElement>document.getElementById("spot" + this.parkingSpotsData[i].id)).style.marginRight = '50px';
+                  (<HTMLButtonElement>document.getElementById("spot" + this.parkingSpotsData[i].id)).style.marginLeft = '10px';
+                  (<HTMLButtonElement>document.getElementById("spot" + this.parkingSpotsData[i].id)).style.marginTop = '6px';
+                  (<HTMLButtonElement>document.getElementById("spot" + this.parkingSpotsData[i].id)).style.backgroundColor = '#d3d3d3';
 
 
                   if (this.parkingSpotsData[i].type === "Reserved") {
-                    (<HTMLButtonElement>document.getElementById("spot" + this.parkingSpotsData[i].id_Spot)).style.background = '#2a3bcf'; this.arrayReservedSpots.push(this.parkingSpotsData[i].id_Spot);
+                    (<HTMLButtonElement>document.getElementById("spot" + this.parkingSpotsData[i].id)).style.background = '#2a3bcf'; this.arrayReservedSpots.push(this.parkingSpotsData[i].id);
                   }
-                  if (this.parkingSpotsData[i].vehicle.license_Plate != "0000000") {
-                      (<HTMLButtonElement>document.getElementById("spot" + this.parkingSpotsData[i].id_Spot)).disabled = true;
-                      (<HTMLButtonElement>document.getElementById("spot" + this.parkingSpotsData[i].id_Spot)).style.background = '#ff0000';
+                  if (this.parkingSpotsData[i].vehicle.licensePlate != "0000000") {
+                      (<HTMLButtonElement>document.getElementById("spot" + this.parkingSpotsData[i].id)).disabled = true;
+                      (<HTMLButtonElement>document.getElementById("spot" + this.parkingSpotsData[i].id)).style.background = '#ff0000';
                       avaSpot = 1;
 
                   }
                   if (this.parkingSpotsData[i].status === "Inactive" || this.parkingSpotsData[i].status === "Inactivo") {
-                    (<HTMLButtonElement>document.getElementById("spot" + this.parkingSpotsData[i].id_Spot)).disabled = true;
-                    (<HTMLButtonElement>document.getElementById("spot" + this.parkingSpotsData[i].id_Spot)).style.background = '#ffd800';
+                    (<HTMLButtonElement>document.getElementById("spot" + this.parkingSpotsData[i].id)).disabled = true;
+                    (<HTMLButtonElement>document.getElementById("spot" + this.parkingSpotsData[i].id)).style.background = '#ffd800';
                       avaSpot = 1;
                   }
                   if (avaSpot == 1) {
-                      this.arraySpots = this.arrayRemove(this.arraySpots, this.parkingSpotsData[i].id_Spot);
+                      this.arraySpots = this.arrayRemove(this.arraySpots, this.parkingSpotsData[i].id);
 
                   }
                   avaSpot = 0;
