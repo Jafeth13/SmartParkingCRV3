@@ -139,10 +139,10 @@ rutSpot(){
 }
 rutRateType(){
   console.log(this.rateId)
-  this.rest.getRateTypeById(this.rateId).subscribe((data: {}) => {
+  this.rest.getRateTypeById(this.rateId).subscribe((data:any) => {
     console.log(data);
     this.rateTypeInfo = data;
-    this.rateTypeIn=this.rateTypeInfo.booking_Time;
+    this.rateTypeIn=data.bookingTime;
   });
 }
 rutParkingLot(){
@@ -160,11 +160,19 @@ rutParkingLot(){
 
 
 rutVehicle(){
-  this.rest.getVehicleById(this.vehiId).subscribe((data: {}) => {
-    console.log(data);
-    this.vehicleData = data;
-  //  this.vehicleLicense=this.vehicleData.licensePlate;
-  });
+  console.log(this.vehiId)
+  // this.rest.getVehicleById(this.vehiId).subscribe((data: any) => {
+  //   console.log(data);
+  //   this.vehicleData = data;
+  //   this.vehicleLicense=data.licensePlate;
+  // });
+
+
+  this.rest.getVehicleByLicense(this.vehiId).subscribe((data: any) => {
+       console.log(data);
+       this.vehicleData = data;
+       this.vehicleLicense=data.licensePlate;
+     });
 }
 
 
@@ -209,6 +217,7 @@ getKey(){
 
 
 LoadSpotsByParking() {
+  console.log('el carro es '+this.vehiId)
   console.log(this.rateId)
           var count = 0;
           var spots = this.parkingSpotsData.length;

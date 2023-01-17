@@ -8,7 +8,7 @@
                 <mat-label>Select your vehicle</mat-label>
                 <mat-select id="selectReservation"formControlName="firstCtrl" [(ngModel)]="vehiId" required>
                   <mat-option value="">Select a vehicle</mat-option>
-                  <mat-option *ngFor="let v of vehicle" [value]="v.vehicle.idVehicle">{{v.vehicle.licensePlate}}</mat-option>
+                  <mat-option *ngFor="let v of vehicle" [value]="v.vehicle.licensePlate">{{v.vehicle.licensePlate}}</mat-option>
                 </mat-select>
               </mat-form-field>
           </div>

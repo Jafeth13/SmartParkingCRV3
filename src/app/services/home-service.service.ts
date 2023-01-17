@@ -214,6 +214,9 @@ getVehicleById(id:any):Observable<any>{
   return  this.http.get('https://localhost:7186/api/vehicle/GetByEmail/id?id='+id, httpOptions);   
 }
 
+getVehicleByLicense(id:any):Observable<any>{
+  return  this.http.get('https://localhost:7186/api/vehicle/GetByLicensePlate?licensePlate='+id, httpOptions);   
+}
 /////////////////////////////////////*****Reports*****///////////////////////////////////////////
 report1(){
   return  this.http.get('http://localhost:8097/api/pdf/generate1', {responseType:'blob'});  
