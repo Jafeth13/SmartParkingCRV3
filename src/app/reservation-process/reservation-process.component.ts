@@ -63,7 +63,7 @@ export class ReservationProcessComponent implements OnInit {
     
   }
   
-  @Input()TicketData={parking:0,spot:0,user:0,rate:0,star:'',end:''};
+  @Input()TicketData={parkingLot:0,spot:0,user:0,rateType:0,starDay:'',endDay:''};
   addTicket(){
    
    // console.log("hola 2");
@@ -71,12 +71,12 @@ export class ReservationProcessComponent implements OnInit {
     console.log('id spot es '+this.spotId)
     let idU = localStorage.getItem('idUsuario');
     console.log('user name es '+idU)
-    console.log('rate type es '+this.rateTypeInfo.idRate_Type)
+    console.log('rate type es '+this.rateTypeInfo.idRateType)
     console.log('star day '+this.startDate.toString())
-   // this.TicketData={parking:this.route.snapshot.params['id_Parking_Lot'],spot:this.spotId,user:this.userId.id_User,
-   // rate:this.rateTypeInfo.id_Rate_Type,star:this.startDate.toString(),end:''};
-   // console.log(this.TicketData)
-   /* 
+   this.TicketData={parkingLot:this.route.snapshot.params['id_Parking_Lot'],spot:this.spotId,user:this.userId,
+   rateType:this.rateTypeInfo.idRateType,starDay:this.startDate.toString(),endDay:''};
+   console.log(this.TicketData)
+   
     this.rest.ReservationTicket(this.TicketData).subscribe((result) => {
       Swal.fire(
         'Good job!',
@@ -93,7 +93,7 @@ export class ReservationProcessComponent implements OnInit {
         text: 'Something went wrong!'
       })
     });
-   */
+   
   }
   getTicketInfo(){
     if(this.arraySelectedSpots.length==0){
@@ -108,6 +108,7 @@ export class ReservationProcessComponent implements OnInit {
     this.rutSpot();
     this.rutRateType();
     this.rutVehicle();
+    this.getUser()
     }
   }
 
@@ -157,6 +158,15 @@ rutParkingLot(){
     
   });
 }
+getUser(){
+const cookie:string=this.cookieService.get('token')
+let idU = localStorage.getItem('idUsuario');
+
+this.restUser.getUserEdit(idU,cookie).subscribe((data: any) => {
+  console.log(data);
+  this.userId = data.idUser;
+});
+}
 
 
 rutVehicle(){
@@ -172,6 +182,7 @@ rutVehicle(){
        console.log(data);
        this.vehicleData = data;
        this.vehicleLicense=data.licensePlate;
+
      });
 }
 
@@ -193,10 +204,10 @@ this.hour=(<HTMLInputElement> document.getElementById("time")).value;
 getUserVehicles(){
   let idU = localStorage.getItem('idUsuario');
   console.log('el id del usuario es '+idU)
-  this.restUser.getUserEmail(idU).subscribe((data:{})=>{
+  this.restUser.getUserEmail(idU).subscribe((data:any)=>{
     console.log(data);
     this.vehicle=data;
-    this.userId=data;
+   // this.userId=data.user.idUser;
     /*
      var html='';
      for(let i=0;i<this.vehicle.vehicles.length;i++){

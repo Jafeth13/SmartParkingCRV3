@@ -77,7 +77,7 @@ export class HomeServiceService {
   }
 
   ReservationTicket(ticket :any){
-    return this.http.post(endpoint+'Tickets',ticket,httpOptions);
+    return this.http.post('https://localhost:7186/ticket/Insert',ticket,httpOptions);
   }
 
   /*********************************************************************LOGIN*******************************************************************/
