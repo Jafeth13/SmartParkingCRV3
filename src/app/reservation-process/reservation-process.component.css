@@ -1,89 +1,89 @@
 .mat-stepper-horizontal {
-    margin-top: 200px;
-  }
-  
-  .mat-form-field {
-    margin-top: 16px;
-  }
+  margin-top: 200px;
+}
 
-  .text-center {
-    text-align: center !important;
+.mat-form-field {
+  margin-top: 16px;
+}
+
+.text-center {
+  text-align: center !important;
 }
 
 .btn_spot2 {
-  color: #000000;
-  padding: 7px 30px;
-  border: 2px solid #000000;
-  font-size: 14px;
-  border-radius: 10px;
-  font-family: Arial;
-  font-weight: 600;
-  margin-right: 50px;
-  margin-left: 10px;
-  margin-top: 6px;
-  background-color: #d3d3d3
+color: #000000;
+padding: 7px 30px;
+border: 2px solid #000000;
+font-size: 14px;
+border-radius: 10px;
+font-family: Arial;
+font-weight: 600;
+margin-right: 50px;
+margin-left: 10px;
+margin-top: 6px;
+background-color: #d3d3d3
 }
 .label-spot {
-  color: #000000;
-  padding: 0px 5px;
-  font-family: Arial;
-  margin-right: 50px;
+color: #000000;
+padding: 0px 5px;
+font-family: Arial;
+margin-right: 50px;
 }
 #occupied-spot {
-  color: #000000;
-  padding: 12px 30px;
-  border: 2px solid #000000;
-  font-size: 14px;
-  border-radius: 10px;
-  font-family: Arial;
-  font-weight: 600;
-  margin-right: 1px;
-  margin-left: 2px;
-  margin-top: 6px;
-  background-color: #ff0000;
+color: #000000;
+padding: 12px 30px;
+border: 2px solid #000000;
+font-size: 14px;
+border-radius: 10px;
+font-family: Arial;
+font-weight: 600;
+margin-right: 1px;
+margin-left: 2px;
+margin-top: 6px;
+background-color: #ff0000;
 }
 
 #enabled-spot {
-  color: #000000;
-  padding: 12px 30px;
-  border: 2px solid #000000;
-  font-size: 14px;
-  border-radius: 10px;
-  font-family: Arial;
-  font-weight: 600;
-  margin-right: 1px;
-  margin-left: 10px;
-  margin-top: 6px;
-  background-color: #d3d3d3;
-  height: 10px;
+color: #000000;
+padding: 12px 30px;
+border: 2px solid #000000;
+font-size: 14px;
+border-radius: 10px;
+font-family: Arial;
+font-weight: 600;
+margin-right: 1px;
+margin-left: 10px;
+margin-top: 6px;
+background-color: #d3d3d3;
+height: 10px;
 }
 
 #inactive-spot {
-  color: #000000;
-  padding: 12px 30px;
-  border: 2px solid #000000;
-  font-size: 14px;
-  border-radius: 10px;
-  font-family: Arial;
-  font-weight: 600;
-  margin-right: 2px;
-  margin-left: 10px;
-  margin-top: 6px;
-  background-color: #ffd800;
-  height: 10px;
+color: #000000;
+padding: 12px 30px;
+border: 2px solid #000000;
+font-size: 14px;
+border-radius: 10px;
+font-family: Arial;
+font-weight: 600;
+margin-right: 2px;
+margin-left: 10px;
+margin-top: 6px;
+background-color: #ffd800;
+height: 10px;
 }
 
 #reserved-spot {
-  color: #000000;
-  padding: 12px 30px;
-  border: 2px solid #000000;
-  font-size: 14px;
-  border-radius: 10px;
-  font-family: Arial;
-  font-weight: 600;
-  margin-right: 2px;
-  margin-left: 10px;
-  margin-top: 6px;
-  background-color: #2a3bcf;
-  height: 10px;
+color: #000000;
+padding: 12px 30px;
+border: 2px solid #000000;
+font-size: 14px;
+border-radius: 10px;
+font-family: Arial;
+font-weight: 600;
+margin-right: 2px;
+margin-left: 10px;
+margin-top: 6px;
+background-color: #2a3bcf;
+height: 10px;
 }
