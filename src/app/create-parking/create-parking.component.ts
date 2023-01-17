@@ -31,10 +31,18 @@ export class CreateParkingComponent implements OnInit {
   }
 
   addParking(){
+    if(!this.parkingForm.valid){
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Something went wrong!',
+      });
+      return;
+    }
 
    // console.log(this.parkingForm.value)
     const cookie:string=this.cookieService.get('token')
-    this.rest.addParking(this.parkingForm.value,cookie).subscribe((result) => {
+ return   this.rest.addParking(this.parkingForm.value,cookie).subscribe((result) => {
       this.parkingData={
         idParking_Lot:0,name:'',capacitySize:0,city:'',province:'',district:''
       }
