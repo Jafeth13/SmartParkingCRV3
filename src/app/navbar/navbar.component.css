@@ -19,6 +19,12 @@
     }
 }
 
+@media (min-width: 375px) {
+    .container-xs, .container {
+        max-width: 340px;
+    }
+}
+
 @media (min-width: 768px) {
     .container-md, .container-sm, .container {
         max-width: 720px;

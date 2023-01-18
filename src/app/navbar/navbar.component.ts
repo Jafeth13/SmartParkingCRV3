@@ -15,17 +15,17 @@ export class NavbarComponent implements OnInit,AfterViewInit {
 
   email: String = 'Log in';
   role: String = '';
-  constructor(private cookieService:CookieService,public authService:AuthServiceService,private route:ActivatedRoute, private router: Router) { } 
+  constructor(private cookieService:CookieService,public authService:AuthServiceService,private route:ActivatedRoute, private router: Router) {
+    
+   } 
 
   
   ngOnInit(): void {
-    this.rut()
-    //if(this.authService.getStorageRole()!=undefined){
-     // this.email = this.authService.getStorageRole();
-   //   this.role = this.authService.getStorageRole().role;
-  // let email2 = localStorage.getItem('name');
-    
-   // }
+   let nombreUsuario = localStorage.getItem('usuario');
+    if(nombreUsuario!=null){
+      this.rut()
+    }
+
   }
   ngAfterViewInit() {
     let email2 = localStorage.getItem('name');
@@ -72,23 +72,23 @@ rut() {
     this.email = 'Log in';
     this.role = 'vamos'  
     this.authService.logout();
-    //this.authService.user = undefined;
+    this.authService.user = undefined;
 
-    let idU = localStorage.getItem('idUsuario');
-    idU = '';
-    let idR = localStorage.getItem('idRole');
-    idR = '';
-    let nombreUsuario = localStorage.getItem('usuario');
-    nombreUsuario = '';
-    let apellido = localStorage.getItem('apellido');
-    apellido = '';
+    // let idU = localStorage.getItem('idUsuario');
+    // idU = '';
+    // let idR = localStorage.getItem('idRole');
+    // idR = '';
+    // let nombreUsuario = localStorage.getItem('usuario');
+    // nombreUsuario = '';
+    // let apellido = localStorage.getItem('apellido');
+    // apellido = '';
 
-    
-    let email3 = localStorage.getItem('Smart ParkingLot');
-    email3 = '';
-    let nameRol=localStorage.getItem('nameRole');
-    nameRol=''
-    this.cookieService.delete('token');
+    // 
+    // let email3 = localStorage.getItem('Smart ParkingLot');
+    // email3 = '';
+    // let nameRol=localStorage.getItem('nameRole');
+    // nameRol=''
+    // this.cookieService.delete('token');
 
     //this.role=''
   }
