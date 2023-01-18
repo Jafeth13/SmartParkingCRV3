@@ -20,6 +20,7 @@ export class RatetypeTableComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['Booking', 'amount', 'action'];
   @ViewChild(MatPaginator) paginator: any = MatPaginator;
   rateType: any = [];
+
   constructor(
     public rest: RateTypeServiceService,
     public restHome:HomeServiceService,
@@ -39,8 +40,11 @@ export class RatetypeTableComponent implements OnInit, AfterViewInit {
   getAllRateTypes() {
     const cookie: string = this.cookieService.get('token');
     this.rest.getAllRateTypes(cookie).subscribe((data: any) => {
+      console.log(data);
       this.dataSource.data = data;
+      this.rateType = data;
     });
+    console.log(this.rateType)
   }
 
   ngAfterViewInit() {

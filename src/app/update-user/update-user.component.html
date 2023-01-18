@@ -1,53 +1,71 @@
 <app-navbar> </app-navbar>
-<section class="page-section" id="adminRegister">
-    <div class="container">
-        <div class="col-md-offset-1 col-md-4 col-sm-12" id="log">
 
+<div class="container">
+    <div class="abs-center">
+        <form action="#" class="border rounded p-2 form">
+            <h1 class="text-center display-1">Update user</h1>
+            <div class="mt-2">
+                <input [(ngModel)]="userDataUpdate.identification" name="identification" placeholder="Identification"
+                    class="form-control mt-17" />
+            </div>
 
+            <div class="mt-2">
+                <input [(ngModel)]="userDataUpdate.name" name="name" placeholder="Name"
+                    class="form-control mt-17" />
+            </div>
 
-            <mat-card class="example-card">
+            <div class="mt-2">
+                <input [(ngModel)]="userDataUpdate.lastName" name="lastName" placeholder="Last name"
+                    class="form-control mt-17" />
+            </div>
 
-                <div class="margin" >
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                   
-                    <form action="" id="userRegister-entry-form" class="login-form">
-                        <h2 class="text-center mb-4">Register</h2>
-                        <input  [(ngModel)]="userDataUpdate.idUser"type="text"  hidden>
-    
-                        <input  [(ngModel)]="userDataUpdate.identification" type="text" autocomplete="off" name="identification_Admin" id="identification_Admin" class="form-control rounded-left" placeholder="Identification" required="">
-    
-                        <input  [(ngModel)]="userDataUpdate.name"type="text" autocomplete="off" name="name_Admin" id="name_Admin" class="form-control rounded-left" placeholder="Name" required="">
-    
-                        <input  [(ngModel)]="userDataUpdate.lastName"type="text" autocomplete="off" name="lastName_Admin" id="lastName_Admin" class="form-control rounded-left" placeholder="LastName" required="">
-    
-                        <input  [(ngModel)]="userDataUpdate.telNumber"type="text" autocomplete="off" name="cel_Admin" id="cel_Admin" class="form-control rounded-left" placeholder="Telephone Number" required="">
-    
-                        <input  [(ngModel)]="userDataUpdate.email" type="email" autocomplete="off" name="email_Admin" id="email_Admin" class="form-control rounded-left" placeholder="Email address" required="">
-    
-                        <input  [(ngModel)]="userDataUpdate.password"type="password" autocomplete="off" name="password_Admin" id="password_Admin" class="form-control rounded-left" placeholder="Password" required="">
-    
-                        <select  [(ngModel)]="userDataUpdate.role.idRole" class="form-control rounded-left" name="role_Admin" id="role_Admin">
-                            <option value=0 selected>Select your role</option>
-                            <option value=1 selected>Admin</option>
-                            <option value=2 selected>Operator</option>
-                            <option value=3 selected>Client</option>
-                        </select>
-    
-                        <button class="form-control btn btn-primary rounded submit px-3" (click)="update()">update</button>
-                    </form>
-                </div>                
-            </mat-card> 
+            <div class="mt-2">
+                <input [(ngModel)]="userDataUpdate.telNumber" name="telNumber" placeholder="Telephone"
+                    class="form-control mt-17" />
+            </div>
 
-            
-        </div>
+            <div class="mt-2">
+                <input [(ngModel)]="userDataUpdate.email" name="email" autocomplete="off" type="email" placeholder="Email"
+                    class="form-control mt-17" />
+            </div>
+
+            <div class="mt-2">
+                <input [(ngModel)]="userDataUpdate.password" name="password" type="password" autocomplete="off" placeholder="Password"
+                    class="form-control mt-17" />
+            </div>
+
+            <div class="mt-2">
+                <!-- decirle a yogurd  formControlName="province"  desaparese el select -->
+                <select class="form-select" aria-label="Default select example">
+                    <option selected>Open this select menu</option>
+                    <option value=0>Admin</option>
+                    <option value=1>Operator</option>
+                    <option value=2>Client</option>
+                </select>
+            </div>
+
+            <div class="flex-conteiner">
+                <div class="m-2">
+                    <button (click)="update()"  type="submit" class="btn btn-dark">
+                        Update
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-check-lg" viewBox="0 0 16 16">
+                            <path
+                                d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="m-2">
+                    <button type="submit" class="btn btn-danger" routerLink="/PrincipalAdmin">
+                        Return
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-arrow-left" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </form>
     </div>
-    <div class="example-button-container">
-        <button mat-icon-button="Link"  routerLink="/PrincipalAdmin" aria-label="Example icon button with a home icon">
-            <mat-icon>home</mat-icon>
-          </button>
-        </div>
-</section>
-
+</div>

@@ -4,6 +4,7 @@ import { catchError, Observable, of, tap } from 'rxjs';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { Token } from '@angular/compiler';
+
 const endpoint = 'https://apiproyectosmarttickets.azurewebsites.net/api/';
 const ticketsEndpoint='http://localhost:8097/api/Tickets';
 const authEndpoint = 'http://localhost:8097/api/auth';
@@ -14,6 +15,7 @@ const UserEndpoint='http://localhost:8097/api/user';
 const SpotEndpoint='http://localhost:8097/api/spot';
 const VehicleEndpoint='http://localhost:8097/api/vehicle';
 const ReportEndpoint='http://localhost:8097/api/pdf';
+const updateRate = 'https://localhost:7186/rate/Update';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -151,7 +153,7 @@ export class HomeServiceService {
   }
 
   updateRateType(updateRateType: any){
-    return this.http.put(rateTypeEndpoint+'/update',updateRateType,httpOptions);
+    return this.http.put(updateRate,updateRateType,httpOptions);
   }
 
   getRateTypeById(id:any):Observable<any>{

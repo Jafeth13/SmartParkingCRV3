@@ -1,19 +1,19 @@
 <app-navbar></app-navbar>
 
-
-
-
- <div class="container">
+<div class="container">
     <div class="abs-center">
         <form [formGroup]="parkingForm" (ngSubmit)="addParking()" action="#" class="border rounded p-2 form">
             <h1 class="text-center display-1">Parking Lot</h1>
-            <input formControlName="name" type="text" name="namePL" class="form-control" placeholder="Name" required="">
-            <div class="mt-2"><input formControlName="capacitySize" type="text" name="capacity" placeholder="Capacity"
-                    class="form-control mt-17">
+            <input formControlName="name" type="text" name="namePL" class="form-control" placeholder="Name"
+                required="" />
+            <div class="mt-2">
+                <input formControlName="capacitySize" type="text" name="capacity" placeholder="Capacity"
+                    class="form-control mt-17" />
             </div>
-            <div class="mt-2"><select class="form-select" formControlName="province"
-                    aria-label="Default select example">
-                    <option selected>Province</option>
+            <div class="mt-2">
+                <!-- decirle a yogurd  formControlName="province"  desaparese el select -->
+                <select class="form-select" formControlName="province" aria-label="Default select example">
+                    <option selected>Open this select menu</option>
                     <option value="Cartago">Cartago</option>
                     <option value="San Jose">San Jose</option>
                     <option value="Alajuela">Alajuela</option>
@@ -23,24 +23,36 @@
                     <option value="Limon">Limon</option>
                 </select>
             </div>
-            <div class="mt-2"><input type="text" name="city" placeholder="City" formControlName="city" class="form-control"></div>
-            <div class="mt-2"><input type="text" name="district" placeholder="District" formControlName="district" class="form-control"></div>
+            <div class="mt-2">
+                <input type="text" name="city" placeholder="City" formControlName="city" class="form-control" />
+            </div>
+            <div class="mt-2">
+                <input type="text" name="district" placeholder="District" formControlName="district"
+                    class="form-control" />
+            </div>
 
             <div class="flex-conteiner">
-                <div class="m-2"><button type="submit" class="btn btn-dark">Add
+                <div class="m-2">
+                    <button (click)="addParking()" type="submit" class="btn btn-dark">
+                        Add
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                             class="bi bi-check-lg" viewBox="0 0 16 16">
                             <path
                                 d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z" />
-                        </svg></button></div>
-                <div class="m-2"><button type="submit" class="btn btn-danger">Return
+                        </svg>
+                    </button>
+                </div>
+                <div class="m-2">
+                    <button type="submit" class="btn btn-danger" routerLink="/PrincipalAdmin">
+                        Return
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                             class="bi bi-arrow-left" viewBox="0 0 16 16">
                             <path fill-rule="evenodd"
                                 d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
                         </svg>
-                    </button></div>
+                    </button>
+                </div>
             </div>
         </form>
-    </div>
+    </div>
 </div>
