@@ -36,7 +36,7 @@
 
             <div class="mt-2">
                 <!-- decirle a yogurd  formControlName="province"  desaparese el select -->
-                <select class="form-select" aria-label="Default select example">
+                <select [(ngModel)]="userDataUpdate.role.idRole" name="select"  id="se"class="form-select" aria-label="Default select example">
                     <option selected>Open this select menu</option>
                     <option value=0>Admin</option>
                     <option value=1>Operator</option>

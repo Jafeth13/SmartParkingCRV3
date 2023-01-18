@@ -33,8 +33,13 @@ export class NavbarComponent implements OnInit,AfterViewInit {
   }
 
   openDialog() {
-    this.router.navigate(['/LoginForm']); 
-    
+   
+    let email2 = localStorage.getItem('name');
+    if(email2!=null){
+       this.router.navigate(['/perfil']);
+    }else{
+      this.router.navigate(['/LoginForm']); 
+    }
   }
 rut() {
   let email2 = localStorage.getItem('name');

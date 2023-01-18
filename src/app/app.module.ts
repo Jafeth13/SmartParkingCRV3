@@ -66,6 +66,7 @@ import { ClientTableComponent } from './client-table/client-table.component';
 
 import { UserGuardGuard } from './user-guard.guard';
 import { JwtInterceptorInterceptor } from './jwt-interceptor.interceptor';
+import { PerfilUserComponent } from './perfil-user/perfil-user.component';
 
 
 const appRoutes: Routes = [
@@ -265,6 +266,10 @@ const appRoutes: Routes = [
   path: 'VehicleClientUser',
   component: UserVehicleClientComponent,
   data: {title: 'Vehicle Client' }
+},{
+  path: 'perfil',
+  component: PerfilUserComponent,
+  data: {title: 'Vehicle Client' }
 }
 ];
 @NgModule({
@@ -311,6 +316,7 @@ const appRoutes: Routes = [
     UpdateTicketComponent,
     UserVehicleClientComponent,
     ClientTableComponent,
+    PerfilUserComponent,
   ],
   imports: [ 
     RouterModule.forRoot(appRoutes),
