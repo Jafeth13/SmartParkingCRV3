@@ -12,10 +12,15 @@
 
     <h1 class="section-heading text-uppercase">Parking</h1>
 
-    <mat-form-field class="example-full-width" appearance="fill">
-      <mat-label>Search</mat-label>
-      <input matInput placeholder="Ingresa datos" (keyup)="applyFilter($event)" />
-    </mat-form-field>
+    <div class="grid text-center">
+      <div class="g-col-6">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Search</mat-label>
+          <input matInput placeholder="Ingresa datos" (keyup)="applyFilter($event)" />
+        </mat-form-field>
+      </div>
+      <div> <button type="button" routerLink="/createParkings" class="btn btn-primary mr-5">Agregar Parking</button></div>
+    </div>
   </div>
   <BR>
 
@@ -71,7 +76,6 @@
             </div>
 
             <div class="example-button-row">
-              <button type="button" class="btn btn-secondary" (click)="add()">+</button>
               <button mat-fab color="primary" routerLink="/UpdateParking/{{element.idParkingLot}}" aria-label="Example icon button with a delete icon">
                 <mat-icon>update</mat-icon>
                </button>

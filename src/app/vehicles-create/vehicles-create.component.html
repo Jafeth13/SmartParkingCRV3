@@ -1,44 +1,66 @@
 <app-navbar></app-navbar>
 
-<section class="page-section" id="vehicles">
-    <div class="container">
-      
-            <div class="col-md-offset-1 col-md-4 col-sm-12" id="log">
+<div class="container">
+    <div class="abs-center">
+        <form [formGroup]="vehicleForm" (ngSubmit)="addVehicle()" action="#" class="border rounded p-2 form">
+        <!-- <form action="#" class="border rounded p-2 form"> -->
+            <h1 class="text-center display-1">Add vehicle</h1>
 
-                <br>
-                <br>
-                <br>
-                <div class="entry-form3">
-                    <form action="" id="vehicle-entry-form">
-                        <h2>Add your vehicle</h2>
+            <div class="mt-2">
+                <input formControlName="licensePlate" name="LicensePlate" placeholder="License Plate"
+                    class="form-control mt-17"/>
+            </div>
 
-                        <input [(ngModel)]="vehicleData.id_Vehicle" type="text" name="idVehicle-form" id="idVehicle-form" hidden>
+            <div class="mt-2">
+                <input formControlName="color"  name="color" placeholder="Color"
+                    class="form-control mt-17" />
+            </div>
 
-                        <input [(ngModel)]="vehicleData.license_Plate" type="text" name="licencsePlate-form" id="licensePlate-form" class="form-control" placeholder="License Plate" required="">
+            <div class="mt-2">
+                <input formControlName="weight" name="weight" placeholder="Weight"
+                    class="form-control mt-17" />
+            </div>
 
-                        <input [(ngModel)]="vehicleData.color" type="text" name="color-form" id="color-form" class="form-control" placeholder="Color" required="">
+            <div class="mt-2">
+                <input formControlName="brand"  name="brand" placeholder="Brand"
+                    class="form-control mt-17" />
+            </div>
 
-                        <input [(ngModel)]="vehicleData.weight" type="number" name="weight-form" id="weight-form" class="form-control" placeholder="Weight" required="">
+        
+            <div class="mt-2">
+                <!-- decirle a yogurd  formControlName="province"  desaparese el select -->
+                <select formControlName="vehicleType" name="type" class="form-select" aria-label="Default select example">
+                    <option selected>Open this select menu</option>
+                    <option value=0>Vehiculo Particular</option>
+                    <option value=1>Vehiculo Carga</option>
+                    <option value=2>Motocicleta</option>
+                    <option value=3>Bicicleta</option>
+                    <option value=4>Vehiculo Pesado</option>
+                </select>
+            </div>
 
-                        <input [(ngModel)]="vehicleData.brand" type="text" name="brand-form" id="brand-form" class="form-control" placeholder="Brand" required="">
-
-                        <select [(ngModel)]="vehicleData.vehicle_Type.id_Type" class="form-control without-margin" name="type-form" id="type-form">
-                            <option value=0 selected>Select the type of the vehicle</option>
-                            <option value=1 selected>Vehiculo Particular</option>
-                            <option value=2 selected>Vehiculo Carga</option>
-                            <option value=3 selected>Motocicleta</option>
-                            <option value=4 selected>Bicicleta</option>
-                            <option value=5 selected>Vehiculo Pesado</option>
-                        </select>
-
-                        <button class="submit-btn form-control" (click)="addVehicle()" id="form-submit-vehicle">Add Vehicle</button>
-                    </form>
+            <div class="flex-conteiner">
+                <div class="m-2">
+                    <button type="submit" class="btn btn-dark">
+                        update
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-check-lg" viewBox="0 0 16 16">
+                            <path
+                                d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="m-2">
+                    <button  routerLink="/PrincipalAdmin" type="submit" class="btn btn-danger" routerLink="/PrincipalAdmin">
+                        Return
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-arrow-left" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
+                        </svg>
+                    </button>
                 </div>
             </div>
-        </div>
-        <div class="example-button-container">
-            <button mat-icon-button="Link"  routerLink="/PrincipalAdmin" aria-label="Example icon button with a home icon" id="btnHomeVehicle">
-                <mat-icon>home</mat-icon>
-              </button>
-            </div>
-</section>
+        </form>
+    </div>
+</div>

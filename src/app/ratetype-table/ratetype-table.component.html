@@ -9,10 +9,15 @@
 
     <h1 class="section-heading text-uppercase">Rate Type</h1>
 
-    <mat-form-field class="example-full-width" appearance="fill">
-      <mat-label>Search</mat-label>
-      <input matInput placeholder="Search" (keyup)="applyFilter($event)" />
-    </mat-form-field>
+    <div class="grid text-center">
+      <div class="g-col-6">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Search</mat-label>
+          <input matInput placeholder="Ingresa datos" (keyup)="applyFilter($event)" />
+        </mat-form-field>
+      </div>
+      <div> <button type="button" routerLink="/AddRateType" class="btn btn-primary mr-5">Agregar Rate Type</button></div>
+    </div>
   </div>
   <BR>
 

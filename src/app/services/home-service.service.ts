@@ -143,7 +143,7 @@ export class HomeServiceService {
 */
 
   addRateType(rateType :any){
-    return this.http.post(rateTypeEndpoint+'/add', rateType, httpOptions);   
+    return this.http.post('https://localhost:7186/rate/Insert', rateType, httpOptions);   
   }
 
   deleteRateType(id: number): Observable<any>{
@@ -177,7 +177,7 @@ getSpotEdit(id:any):Observable<any>{
 }
 
 addSpot(SpotData:any){
-  return this.http.post(SpotEndpoint+'/add', SpotData, httpOptions); 
+  return this.http.post('https://localhost:7186/spot/Insert', SpotData, httpOptions); 
 }
 
 updateSpot(Spot:any){
@@ -207,7 +207,7 @@ deleteVehicle(id:number){
 }
 
 addVehicle(Vehicle:any){
-  return this.http.post(VehicleEndpoint+'/add', Vehicle, httpOptions); 
+  return this.http.post('https://localhost:7186/api/vehicle/Insert', Vehicle, httpOptions); 
 }
 
 addVehicleNet(vehicle:any){

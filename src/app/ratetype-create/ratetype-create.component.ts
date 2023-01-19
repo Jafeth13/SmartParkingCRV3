@@ -18,7 +18,7 @@ export class RatetypeCreateComponent implements OnInit {
 
     this.rateTypeForm = this.fb.group({
       id: 0,
-      booking_Time: ['', [Validators.required]],
+      bookingTime: ['', [Validators.required]],
       amount: ['', [Validators.required]]
   })
 
@@ -31,6 +31,8 @@ export class RatetypeCreateComponent implements OnInit {
     if (!this.rateTypeForm.valid) {
       return;
     }
+
+    console.log(this.rateTypeForm.value);
 
     this.rest.addRateType(this.rateTypeForm.value).subscribe((result) => {
       this.router.navigate(['/PrincipalAdmin']);

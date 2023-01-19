@@ -9,11 +9,19 @@
       <br />
   
       <h1 class="section-heading text-uppercase">Vehicles</h1>
+
+      <div class="grid text-center">
+        <div class="g-col-6">
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Search</mat-label>
+            <input matInput placeholder="Ingresa datos" (keyup)="applyFilter($event)" />
+          </mat-form-field>
+        </div>
+        <div> <button type="button" routerLink="/AddVehicle" class="btn btn-primary mr-5">Agregar nuevo Vehiculo</button></div>
   
-      <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Search</mat-label>
-        <input matInput placeholder="Ingresa datos" (keyup)="applyFilter($event)" />
-      </mat-form-field>
+      </div>
+
+      
     </div>
     <BR>
   
