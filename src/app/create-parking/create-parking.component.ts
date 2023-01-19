@@ -20,20 +20,21 @@ export class CreateParkingComponent implements OnInit {
     this.parkingForm = this.fb.group({
       idParking_Lot: [0, Validators.required],
       name: ['', Validators.required],
-      capacitySize: [0, Validators.required],
+      capacitySize: ['', Validators.required],
       city: ['', Validators.required],
-      province: ['', Validators.required],
+      province: ['Province', Validators.required],
       district: ['', Validators.required]
     })
 
 
   }
-  @Input() parkingData = { idParking_Lot: 0, name: '', capacitySize: 0, city: '', province: '', district: '' };
+  @Input() parkingData = { idParking_Lot: 0, name: '', capacitySize: 0, city: '', province: 'Province', district: '' };
   ngOnInit(): void {
   }
 
   addParking() {
-    if (!this.parkingForm.valid) {
+    console.log(this.parkingForm.value)
+    if (!this.parkingForm.valid || this.parkingForm.value.province == 'Province') {
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
@@ -46,7 +47,7 @@ export class CreateParkingComponent implements OnInit {
     const cookie: string = this.cookieService.get('token')
     return this.rest.addParking(this.parkingForm.value, cookie).subscribe((result) => {
       this.parkingData = {
-        idParking_Lot: 0, name: '', capacitySize: 0, city: '', province: '', district: ''
+        idParking_Lot: 0, name: '', capacitySize: 0, city: '', province: 'Province', district: ''
       }
       Swal.fire(
         'Good job!',
