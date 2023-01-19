@@ -13,7 +13,7 @@
             <div class="mt-2">
                 <!-- decirle a yogurd  formControlName="province"  desaparese el select -->
                 <select class="form-select" [(ngModel)]="parkingL.province" aria-label="Default select example">
-                    <option selected>Open this select menu</option>
+                    <option [(ngModel)]="parkingL.province" selected>Open this select menu</option>
                     <option value="Cartago">Cartago</option>
                     <option value="San Jose">San Jose</option>
                     <option value="Alajuela">Alajuela</option>

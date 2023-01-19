@@ -13,7 +13,7 @@ const roleEndpoint='http://localhost:8097/api/role';
 const rateTypeEndpoint='http://localhost:8097/api/rateType';
 const UserEndpoint='http://localhost:8097/api/user';
 const SpotEndpoint='http://localhost:8097/api/spot';
-const VehicleEndpoint='http://localhost:8097/api/vehicle';
+const VehicleEndpoint='https://localhost:7186/api/vehicle/update';
 const ReportEndpoint='http://localhost:8097/api/pdf';
 const updateRate = 'https://localhost:7186/rate/Update';
 
@@ -209,7 +209,7 @@ addVehicleNet(vehicle:any){
   return this.http.post(endpoint+'Tickets/Insert', vehicle, httpOptions);
 }
 updateVehicle(Vehicle:any){
-  return this.http.put(VehicleEndpoint+'/update',Vehicle,httpOptions);
+  return this.http.put(VehicleEndpoint,Vehicle,httpOptions);
 }
 
 getVehicleById(id:any):Observable<any>{

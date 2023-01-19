@@ -1,51 +1,70 @@
-<app-navbar> </app-navbar>
-<section class="page-section" id=spots>
-    <div class="container">
-  
-            <div class="col-md-offset-1 col-md-4 col-sm-12" id="log">
-                <mat-card class="example-card">
+<app-navbar></app-navbar>
 
-                    <div class="margin"  >
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                  
-                    <form action="" id="spot-entry-form" class="login-form">
-                        <h2>Add a spot</h2>
-                        <input [(ngModel)]="spotEdit.id_Spot" type="text" name="idSpot-form" id="idSpot-form" hidden>
+<div class="container">
+    <div class="abs-center">
+        <form action="#" class="border rounded p-2 form">
+            <h1 class="text-center display-1">Update spot</h1>
 
-                        <input [(ngModel)]="spotEdit.number" type="number" name="number-form" id="number-form" class="form-control rounded-left" placeholder="Number" required="">
-
-                        <input [(ngModel)]="spotEdit.type"  name="type-form" id="type-form" class="form-control rounded-left" placeholder="type" required="">
-                       
-                        <select [(ngModel)]="spotEdit.vehicle.id_Vehicle"  class="form-control rounded-left" name="parking-spot-form" id="parking-spot-form">
-                            <option value="0" selected>Select the vehicle</option>
-                            <option [value]="item.id_Vehicle" *ngFor="let item of vehicle">{{item.license_Plate}}</option>
-                        </select>
-                          <input [(ngModel)]="spotEdit.status"  name="status-form" id="status-form" class="form-control rounded-left" placeholder="status" required="">
-                         
-                          <select  class="form-control" id="status-form" required="">
-                            <option value="Inactive">Inactive</option>
-                            <option value="Active">Active</option>
-                          </select>
-
-                        <select [(ngModel)]="spotEdit.parking_lot.id_Parking_Lot"  class="form-control rounded-left" name="parking-spot-form" id="parking-spot-form">
-                            <option value="0" selected>Select the parking lot</option>
-                            <option [value]="item.id_Parking_Lot" *ngFor="let item of parkingSelect">{{item.name}}</option>
-                        </select>
-
-                        <button class="form-control btn btn-primary rounded submit px-3" (click)="updateSpot()">update</button>
-
-                    </form>
-                </div>                
-            </mat-card> 
-                
+            <div class="mt-2">
+                <input [(ngModel)]="spotEdit.number" name="ID" placeholder="idSpot" class="form-control mt-17"
+                    disabled="true" />
             </div>
-        </div>
-        <div class="example-button-container">
-            <button mat-icon-button="Link"  routerLink="/PrincipalAdmin" aria-label="Example icon button with a home icon">
-                <mat-icon>home</mat-icon>
-              </button>
+
+            <div class="mt-2">
+                <input [(ngModel)]="spotEdit.type" name="type" placeholder="Type" class="form-control mt-17" />
             </div>
-</section>
+
+            <div class="mt-2">
+                <input [(ngModel)]="spotEdit.status" name="status" placeholder="Status" class="form-control mt-17" />
+            </div>
+
+            <div class="mt-2">
+                <select class="form-control" id="status-form" required="">
+                    <option value="Inactive">Inactive</option>
+                    <option value="Active">Active</option>
+                </select>
+            </div>
+
+            <div class="mt-2">
+                <select [(ngModel)]="spotEdit.parking_lot.id_Parking_Lot" class="form-control rounded-left"
+                    name="parking-spot-form" id="parking-spot-form">
+                    <option value="0" selected>Select the parking lot</option>
+                    <option [value]="item.id_Parking_Lot" *ngFor="let item of parkingSelect">{{item.name}}</option>
+                </select>
+
+            </div>
+
+            <div class="mt-2">
+                <select [(ngModel)]="spotEdit.vehicle.id_Vehicle" class="form-control rounded-left"
+                    name="parking-spot-form" id="parking-spot-form">
+                    <option value="0" selected>Select the vehicle</option>
+                    <option [value]="item.id_Vehicle" *ngFor="let item of vehicle">{{item.license_Plate}}</option>
+                </select>
+            </div>
+
+            <div class="flex-conteiner">
+                <div class="m-2">
+                    <button type="submit" class="btn btn-dark">
+                        update
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-check-lg" viewBox="0 0 16 16">
+                            <path
+                                d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="m-2">
+                    <button routerLink="/PrincipalAdmin" type="submit" class="btn btn-danger"
+                        routerLink="/PrincipalAdmin">
+                        Return
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-arrow-left" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -19,7 +19,7 @@ export class VehiclesUpdateComponent implements OnInit {
   }
 
   rut(){
-    this.rest.getVehicleById(this.route.snapshot.params['id_Vehicle']).subscribe((data: {}) => {
+    this.rest.getVehicleByLicense(this.route.snapshot.params['id_Vehicle']).subscribe((data: {}) => {
       console.log(data);
       this.vehicleData = data;
     });
