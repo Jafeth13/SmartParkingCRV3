@@ -41,7 +41,7 @@ tempSpot:any;
       
     });
    
-    
+    console.log(this.dataSource.data)
 
    }
    add(){

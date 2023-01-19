@@ -183,6 +183,11 @@ addSpot(SpotData:any){
 updateSpot(Spot:any){
   return this.http.put(SpotEndpoint+'/update',Spot,httpOptions);
 }
+
+getSpotsById(id:any):Observable<any>{
+  return  this.http.get('https://localhost:7186/spot/GetById?idSpot='+id, httpOptions);   
+}
+
 getSpotsByParking(id:any):Observable<any>{
   return  this.http.get('https://localhost:7186/spot/GetByParkingLot?id='+id, httpOptions);   
 }

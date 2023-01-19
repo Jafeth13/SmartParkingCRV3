@@ -23,7 +23,7 @@ vehicle:any;
 
   rut(){
     console.log(this.route.snapshot.params['id_Spot'])
-    this.rest.getSpotEdit(this.route.snapshot.params['id_Spot']).subscribe((data: {}) => {
+    this.rest.getSpotsById(this.route.snapshot.params['id_Spot']).subscribe((data: {}) => {
       console.log(data);
       this.spotEdit = data;
     });
