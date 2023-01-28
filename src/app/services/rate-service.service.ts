@@ -5,8 +5,8 @@ import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { Token } from '@angular/compiler';
 const updateRate = 'https://localhost:7186/rate/Update';
-const rateTypeEndpoint='http://localhost:8097/api/rateType';
 
+const endpoint='https://localhost:7186/rate';
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
@@ -23,11 +23,11 @@ export class RateServiceService {
   constructor(private http: HttpClient,private cookieService:CookieService) { }
 
   addRateType(rateType :any){
-    return this.http.post('https://localhost:7186/rate/Insert', rateType, httpOptions);   
+    return this.http.post(endpoint+'/Insert', rateType, httpOptions);   
   }
 
   deleteRateType(id: number): Observable<any>{
-    return this.http.delete('https://localhost:7186/rate/Delete?bookingTime='+id, httpOptions).pipe(
+    return this.http.delete(endpoint+'/Delete?bookingTime='+id, httpOptions).pipe(
       catchError(this.handleError('deleteRateType'))
     );
   }
@@ -37,13 +37,13 @@ export class RateServiceService {
   }
 
   getRateTypeById(id:any):Observable<any>{
-    return  this.http.get('https://localhost:7186/rate/GetById?id='+id, httpOptions);   
+    return  this.http.get(endpoint+'/GetById?id='+id, httpOptions);   
   }
 
   
   getAllRateTypes(token:any):Observable<any>{
     let httpHeaders=new HttpHeaders().set("Authorization","bearer "+token);
-    return  this.http.get('https://localhost:7186/rate/Get', {
+    return  this.http.get(endpoint+'/Get', {
       headers:httpHeaders
     }).pipe(
       catchError(this.handleError('GetAllRateTypesError'))

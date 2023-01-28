@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { Token } from '@angular/compiler';
 
-
+const endpoint='https://localhost:7186/ticket';
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
@@ -29,12 +29,12 @@ export class TicketServiceService {
 
   MygetReservation():Observable<any>{
 
-    return  this.http.get('https://localhost:7186/ticket/GetAll',httpOptions);
+    return  this.http.get(endpoint+'/GetAll',httpOptions);
     
   }
 
   ReservationClient(id:any):Observable<any>{
-    return  this.http.get('https://localhost:7186/ticket/GetByIdUser?idUser='+id,httpOptions);
+    return  this.http.get(endpoint+'/GetByIdUser?idUser='+id,httpOptions);
   }
 
   getTicketUpdate(id:number){
@@ -42,11 +42,11 @@ export class TicketServiceService {
   }
 
   TicketUpdate(Ticket3:any){
-    return this.http.put('https://localhost:7186/ticket/Update',Ticket3,httpOptions);
+    return this.http.put(endpoint+'/Update',Ticket3,httpOptions);
   }
 
   ReservationTicket(ticket :any){
-    return this.http.post('https://localhost:7186/ticket/Insert',ticket,httpOptions);
+    return this.http.post(endpoint+'/Insert',ticket,httpOptions);
   }
 
   private handleError<T> (operation = 'operation', result?: T) {

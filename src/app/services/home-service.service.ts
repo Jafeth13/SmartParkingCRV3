@@ -5,8 +5,8 @@ import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { Token } from '@angular/compiler';
 
-const endpoint = 'https://apiproyectosmarttickets.azurewebsites.net/api/';
-const VehicleEndpoint='https://localhost:7186/api/vehicle/update';
+const endpoint = 'https://localhost:7186';
+
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -29,7 +29,7 @@ export class HomeServiceService {
   /*********************************************************************LOGIN*******************************************************************/
 
   login(loginRequest: any){
-    return this.http.post('https://localhost:7186/api/user/Verify',loginRequest,httpOptions).pipe(
+    return this.http.post(endpoint+'/api/user/Verify',loginRequest,httpOptions).pipe(
       tap((response: any) => {
         //httpOptions.headers = httpOptions.headers.set('Authorization', " Bearer "+response.jwtToken);  
         console.log(response)   

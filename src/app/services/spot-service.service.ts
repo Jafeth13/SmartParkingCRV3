@@ -4,7 +4,7 @@ import { catchError, Observable, of, tap } from 'rxjs';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { Token } from '@angular/compiler';
-const SpotEndpoint='http://localhost:8097/api/spot';
+const SpotEndpoint='https://localhost:7186/spot';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -24,7 +24,7 @@ export class SpotServiceService {
   constructor(private http: HttpClient,private cookieService:CookieService) { }
 
   getSpots():Observable<any>{
-    return  this.http.get('https://localhost:7186/spot/Get', httpOptions).pipe(
+    return  this.http.get(SpotEndpoint+'/Get', httpOptions).pipe(
       catchError(this.handleError('GetAllSpotsError'))
     );
   }
@@ -35,11 +35,11 @@ export class SpotServiceService {
   }
   
   getSpotEdit(id:any):Observable<any>{
-    return  this.http.get('https://localhost:7186/spot/GetById?idSpot='+id, httpOptions);  
+    return  this.http.get(SpotEndpoint+'/GetById?idSpot='+id, httpOptions);  
   }
   
   addSpot(SpotData:any){
-    return this.http.post('https://localhost:7186/spot/Insert', SpotData, httpOptions); 
+    return this.http.post(SpotEndpoint+'/Insert', SpotData, httpOptions); 
   }
   
   updateSpot(Spot:any){
@@ -47,11 +47,11 @@ export class SpotServiceService {
   }
   
   getSpotsById(id:any):Observable<any>{
-    return  this.http.get('https://localhost:7186/spot/GetById?idSpot='+id, httpOptions);   
+    return  this.http.get(SpotEndpoint+'/GetById?idSpot='+id, httpOptions);   
   }
   
   getSpotsByParking(id:any):Observable<any>{
-    return  this.http.get('https://localhost:7186/spot/GetByParkingLot?id='+id, httpOptions);   
+    return  this.http.get(SpotEndpoint+'/GetByParkingLot?id='+id, httpOptions);   
   }
 
   private handleError<T> (operation = 'operation', result?: T) {

@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { Token } from '@angular/compiler';
 
-const VehicleEndpoint='https://localhost:7186/api/vehicle/update';
+const VehicleEndpoint='https://localhost:7186/api/vehicle';
 const endpoint = 'https://apiproyectosmarttickets.azurewebsites.net/api/';
 
 
@@ -26,7 +26,7 @@ export class VehicleServiceService {
 
 
   getVehicles():Observable<any>{
-    return  this.http.get('https://localhost:7186/api/vehicle/Get', httpOptions).pipe(
+    return  this.http.get(VehicleEndpoint+'/Get', httpOptions).pipe(
       catchError(this.handleError('GetAllVehiclesError'))
     );  
   }
@@ -38,22 +38,22 @@ export class VehicleServiceService {
   }
   
   addVehicle(Vehicle:any){
-    return this.http.post('https://localhost:7186/api/vehicle/Insert', Vehicle, httpOptions); 
+    return this.http.post(VehicleEndpoint+'/Insert', Vehicle, httpOptions); 
   }
   
   addVehicleNet(vehicle:any){
-    return this.http.post(endpoint+'Tickets/Insert', vehicle, httpOptions);
+    return this.http.post(VehicleEndpoint+'Tickets/Insert', vehicle, httpOptions);
   }
   updateVehicle(Vehicle:any){
-    return this.http.put(VehicleEndpoint,Vehicle,httpOptions);
+    return this.http.put(VehicleEndpoint+'/Update',Vehicle,httpOptions);
   }
   
   getVehicleById(id:any):Observable<any>{
-    return  this.http.get('https://localhost:7186/api/vehicle/GetByEmail/id?id='+id, httpOptions);   
+    return  this.http.get(VehicleEndpoint+'/GetByEmail/id?id='+id, httpOptions);   
   }
   
   getVehicleByLicense(id:any):Observable<any>{
-    return  this.http.get('https://localhost:7186/api/vehicle/GetByLicensePlate?licensePlate='+id, httpOptions);   
+    return  this.http.get(VehicleEndpoint+'/GetByLicensePlate?licensePlate='+id, httpOptions);   
   }
 
   private handleError<T> (operation = 'operation', result?: T) {
