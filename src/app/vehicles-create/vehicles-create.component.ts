@@ -26,9 +26,6 @@ export class VehiclesCreateComponent {
   }
 
   addVehicle() {
-
-    console.log(this.vehicleForm.value)
-
     this.rest.addVehicle(this.vehicleForm.value).subscribe((result) => {
       this.vehicleForm = this.fb.group({
         idVehicle: [0, Validators.required],
@@ -50,7 +47,6 @@ export class VehiclesCreateComponent {
         title: 'Oops...',
         text: 'Something went wrong!',
       });
-      console.log(err);
     });
   }
 }

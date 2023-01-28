@@ -28,7 +28,6 @@ export class UserTableComponent implements OnInit,AfterViewInit {
     const cookie:string=this.cookieService.get('token')
     this.user= [];
     this.rest.getUser(cookie).subscribe((data:any)=>{
-      console.log(data);
       this.dataSource.data=data;
     });
    }
@@ -58,11 +57,8 @@ export class UserTableComponent implements OnInit,AfterViewInit {
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.isConfirmed) {
-  
-        console.log(id)
         this.rest.deleteUser(id,cookie).subscribe(
         (data) =>{
-          console.log(data);
           this.ngOnInit();
         }
       ); 

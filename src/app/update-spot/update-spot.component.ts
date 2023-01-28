@@ -27,9 +27,9 @@ vehicle:any;
   }
 
   rut(){
-    console.log(this.route.snapshot.params['id_Spot'])
+   
     this.restSpot.getSpotsById(this.route.snapshot.params['id_Spot']).subscribe((data: {}) => {
-      console.log(data);
+     
       this.spotEdit = data;
     });
   }
@@ -37,7 +37,7 @@ vehicle:any;
   getParking2(){
     const cookie: string = this.cookieService.get('token');
     this.restParking.userGetParking(cookie).subscribe((data2:{})=>{
-      console.log(data2);
+     
       this.parkingSelect=data2;
     });
    }
@@ -57,14 +57,14 @@ vehicle:any;
         title: 'Oops...',
         text: 'Something went wrong!',
       });
-      console.log(err);
+ 
     });
    }
 
    get(){
     this.vehicle= [];
     this.restVehicle.getVehicles().subscribe((data:{})=>{
-      console.log(data);
+     
       this.vehicle=data;
     });
   }

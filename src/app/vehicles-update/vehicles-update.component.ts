@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
-import { HomeServiceService } from '../services/home-service.service';
 import { VehicleServiceService } from '../services/vehicle-service.service';
 
 @Component({
@@ -21,7 +20,6 @@ export class VehiclesUpdateComponent implements OnInit {
 
   rut(){
     this.rest.getVehicleByLicense(this.route.snapshot.params['id_Vehicle']).subscribe((data: {}) => {
-      console.log(data);
       this.vehicleData = data;
     });
   }
@@ -42,7 +40,6 @@ export class VehiclesUpdateComponent implements OnInit {
         title: 'Oops...',
         text: 'Something went wrong!',
       });
-      console.log(err);
     });
   }
 }

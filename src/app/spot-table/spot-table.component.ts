@@ -30,7 +30,6 @@ tempSpot:any;
     this.spot= [];
     this.tempSpot=[];
     this.rest.getSpots().subscribe((data:any)=>{
-      console.log(data);
       this.dataSource.data=data;
       for(let i = 0; i < this.tempSpot.length; i++) {
         if(this.tempSpot[i].vehicle.license_Plate == "0000000"){
@@ -41,9 +40,6 @@ tempSpot:any;
     this.tempSpot=[]
       
     });
-   
-    console.log(this.dataSource.data)
-
    }
    add(){
     
@@ -70,11 +66,8 @@ tempSpot:any;
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.isConfirmed) {
-  
-        console.log(id)
-        this.rest.deleteSpot(id).subscribe(
+          this.rest.deleteSpot(id).subscribe(
         (data) =>{
-          console.log(data);
           this.ngOnInit();
         }
       ); 

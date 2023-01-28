@@ -2,7 +2,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import Swal from 'sweetalert2';
-import { MyReservationSService } from '../my-reservation-s.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ParkingServiceService } from '../services/parking-service.service';
 
@@ -39,7 +38,6 @@ export class CreateParkingComponent implements OnInit {
       return;
     }
 
-    // console.log(this.parkingForm.value)
     const cookie: string = this.cookieService.get('token')
     return this.rest.addParking(this.parkingForm.value, cookie).subscribe((result) => {
       this.parkingData = {
@@ -56,7 +54,6 @@ export class CreateParkingComponent implements OnInit {
         title: 'Oops...',
         text: 'Something went wrong!',
       });
-      console.log(err);
     });
   }
 

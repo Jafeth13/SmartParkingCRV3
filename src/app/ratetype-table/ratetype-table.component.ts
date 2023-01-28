@@ -41,11 +41,9 @@ export class RatetypeTableComponent implements OnInit, AfterViewInit {
   getAllRateTypes() {
     const cookie: string = this.cookieService.get('token');
     this.rest.getAllRateTypes(cookie).subscribe((data: any) => {
-      console.log(data);
       this.dataSource.data = data;
       this.rateType = data;
     });
-    console.log(this.rateType)
   }
 
   ngAfterViewInit() {
@@ -68,9 +66,7 @@ export class RatetypeTableComponent implements OnInit, AfterViewInit {
       confirmButtonText: 'Yes, delete it!',
     }).then((result) => {
       if (result.isConfirmed) {
-        console.log(id);
         this.restHome.deleteRateType(id).subscribe((data) => {
-          console.log(data);
           this.ngOnInit();
         });
         Swal.fire('Deleted!', 'Your file has been deleted.', 'success');

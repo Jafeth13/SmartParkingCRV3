@@ -27,7 +27,7 @@ export class RateServiceService {
   }
 
   deleteRateType(id: number): Observable<any>{
-    return this.http.delete(rateTypeEndpoint+'/delete/'+id, httpOptions).pipe(
+    return this.http.delete('https://localhost:7186/rate/Delete?bookingTime='+id, httpOptions).pipe(
       catchError(this.handleError('deleteRateType'))
     );
   }

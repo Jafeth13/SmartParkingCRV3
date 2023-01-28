@@ -22,19 +22,13 @@ export class ReservationListUserComponent implements OnInit {
   constructor(public rest:TicketServiceService,private route:ActivatedRoute,private router:Router) { }
   reservations:any=[];
   ngOnInit(): void {
-   
     this.getReservation();
-
-
-   
   }
-
 
   getReservation(){
     let idU = localStorage.getItem('idUsuario');
     this.reservations= [];
     this.rest.ReservationClient(idU).subscribe((data:any)=>{
-      console.log(data);
       this.dataSource.data=data;
     });
   }
@@ -42,7 +36,6 @@ export class ReservationListUserComponent implements OnInit {
   delete(id: number){
     this.rest.delete(id).subscribe(
       (data) =>{
-        console.log(data);
         this.ngOnInit();
       }
     );

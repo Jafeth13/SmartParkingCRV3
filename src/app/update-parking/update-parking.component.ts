@@ -3,7 +3,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import Swal from 'sweetalert2';
-import { HomeServiceService } from '../services/home-service.service';
 import { ParkingServiceService } from '../services/parking-service.service';
 @Component({
   selector: 'app-update-parking',
@@ -20,7 +19,6 @@ export class UpdateParkingComponent implements OnInit {
   rut(){
     const cookie: string = this.cookieService.get('token');
     this.rest.getParking(this.route.snapshot.params['id_Parking_Lot'],cookie).subscribe((data: {}) => {
-      console.log(data);
       this.parkingL = data;
     });
 }
@@ -42,7 +40,6 @@ update(){
       title: 'Oops...',
       text: 'Something went wrong!',
     });
-    console.log(err);
   });
 }
 edit(parkingL:any){

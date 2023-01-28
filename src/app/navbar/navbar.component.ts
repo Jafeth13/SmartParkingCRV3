@@ -5,56 +5,46 @@ import Swal from 'sweetalert2';
 import { AuthServiceService } from '../auth-service.service';
 import { LoginFormComponent } from '../login-form/login-form.component';
 import { AfterViewInit, ViewChild } from '@angular/core';
-import {CookieService} from 'ngx-cookie-service';
+import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  styleUrls: ['./navbar.component.css'],
 })
-export class NavbarComponent implements OnInit,AfterViewInit {
-
+export class NavbarComponent implements OnInit, AfterViewInit {
   email: String = 'Log in';
   role: String = '';
-  constructor(private cookieService:CookieService,public authService:AuthServiceService,private route:ActivatedRoute, private router: Router) {
-    
-   } 
-
-  
+  constructor(
+    private cookieService: CookieService,
+    public authService: AuthServiceService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
   ngOnInit(): void {
-   let nombreUsuario = localStorage.getItem('usuario');
-    if(nombreUsuario!=null){
-      this.rut()
+    let nombreUsuario = localStorage.getItem('usuario');
+    if (nombreUsuario != null) {
+      this.rut();
     }
-
   }
   ngAfterViewInit() {
     let email2 = localStorage.getItem('name');
-
   }
 
   openDialog() {
-   
     let email2 = localStorage.getItem('name');
-    if(email2!=null){
-       this.router.navigate(['/perfil']);
-    }else{
-      this.router.navigate(['/LoginForm']); 
+    if (email2 != null) {
+      this.router.navigate(['/perfil']);
+    } else {
+      this.router.navigate(['/LoginForm']);
     }
   }
-rut() {
-  let email2 = localStorage.getItem('name');
-    
-      this.email =
-        email2 + '';
-
-
-        let role2 = localStorage.getItem('nameRole');
-    
-        this.role =
-          role2 + '';
+  rut() {
+    let email2 = localStorage.getItem('name');
+    this.email = email2 + '';
+    let role2 = localStorage.getItem('nameRole');
+    this.role = role2 + '';
   }
-  logout(){
-
+  logout() {
     const Toast = Swal.mixin({
       toast: true,
       position: 'bottom-end',
@@ -62,40 +52,19 @@ rut() {
       timer: 1700,
       timerProgressBar: true,
       didOpen: (toast) => {
-        toast.addEventListener('mouseenter', Swal.stopTimer)
-        toast.addEventListener('mouseleave', Swal.resumeTimer)
-      }
-    })
-    
+        toast.addEventListener('mouseenter', Swal.stopTimer);
+        toast.addEventListener('mouseleave', Swal.resumeTimer);
+      },
+    });
+
     Toast.fire({
       icon: 'success',
-      title: 'Signed out successfully'
-    })
-
-
+      title: 'Signed out successfully',
+    });
     this.router.navigate(['/homes']);
     this.email = 'Log in';
-    this.role = 'vamos'  
+    this.role = '';
     this.authService.logout();
     this.authService.user = undefined;
-
-    // let idU = localStorage.getItem('idUsuario');
-    // idU = '';
-    // let idR = localStorage.getItem('idRole');
-    // idR = '';
-    // let nombreUsuario = localStorage.getItem('usuario');
-    // nombreUsuario = '';
-    // let apellido = localStorage.getItem('apellido');
-    // apellido = '';
-
-    // 
-    // let email3 = localStorage.getItem('Smart ParkingLot');
-    // email3 = '';
-    // let nameRol=localStorage.getItem('nameRole');
-    // nameRol=''
-    // this.cookieService.delete('token');
-
-    //this.role=''
   }
-
 }

@@ -70,7 +70,6 @@ export class LoginFormComponent implements OnInit {
         title: 'Oops...',
         text: 'Bad credentials',
       });
-      console.log(error);
     });
   }
 
@@ -97,7 +96,6 @@ export class LoginFormComponent implements OnInit {
         title: 'Oops...',
         text: 'Something went wrong!',
       });
-      console.log(error);
     });
   }
 
@@ -105,7 +103,6 @@ export class LoginFormComponent implements OnInit {
   get name() { return this.registerForm.get('name'); };
   get last_Name() { return this.registerForm.get('last_Name'); };
   get tel_Number() { return this.registerForm.get('tel_Number'); };
-  //get email() { return this.registerForm.get('email'); };
-  //get password() { return this.registerForm.get('password'); };
+
 
 }

@@ -2,7 +2,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import Swal from 'sweetalert2';
-import { MyReservationSService } from '../my-reservation-s.service';
 import { UserServiceService } from '../services/user-service.service';
 @Component({
   selector: 'app-create-user',
@@ -12,7 +11,6 @@ import { UserServiceService } from '../services/user-service.service';
 export class CreateUserComponent implements OnInit {
   
   @Input()userData={id_User:0,identification:'',name:'',last_Name:'',tel_number:'',email:'',password:'',role:{id_Role:0 }};
-  
   
   constructor(private cookieService:CookieService,public rest:UserServiceService,private route:ActivatedRoute,private router:Router) { }
 
@@ -36,7 +34,6 @@ export class CreateUserComponent implements OnInit {
         title: 'Oops...',
         text: 'Something went wrong!',
       });
-      console.log(err);
     });
   }
 }

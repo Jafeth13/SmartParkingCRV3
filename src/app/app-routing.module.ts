@@ -51,13 +51,10 @@ import { ParkingTableGuanacasteComponent } from './parking-table-guanacaste/park
 import { AuthServiceService } from './auth-service.service';
 import { HasRoleGuard } from './has-role.guard';
 import { PrincipalClientComponent } from './principal-client/principal-client.component';
-import { PrincipalOperatorComponent } from './principal-operator/principal-operator.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import { ReservationListUserComponent } from './reservation-list-user/reservation-list-user.component';
 import { UpdateTicketComponent } from './update-ticket/update-ticket.component';
 import { UserVehicleClientComponent } from './user-vehicle-client/user-vehicle-client.component';
-import { ClientTableComponent } from './client-table/client-table.component';
-
 import { UserGuardGuard } from './user-guard.guard';
 import { JwtInterceptorInterceptor } from './jwt-interceptor.interceptor';
 import { PerfilUserComponent } from './perfil-user/perfil-user.component';
@@ -128,12 +125,6 @@ const appRoutes: Routes = [
     component: PrincipalClientComponent,
     canActivate: [UserGuardGuard],
    // data: { role: "Client" }
-  },
-  {
-    path: 'PrincipalOperator',
-    component: PrincipalOperatorComponent,
-    canActivate: [UserGuardGuard],
-    data: { role: "Operator" }
   },
   {
     path: 'UpdateParking/:id_Parking_Lot',

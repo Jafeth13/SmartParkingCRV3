@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
-import { HomeServiceService } from '../services/home-service.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { RateServiceService } from '../services/rate-service.service';
 
@@ -28,7 +27,6 @@ export class RatetypeUpdateComponent implements OnInit {
 
   rut() {
     this.rest.getRateTypeById(this.route.snapshot.params['id_Rate_Type']).subscribe((data: {}) => {
-      console.log(data);
       this.rateTypeData = data;
     });
   }
@@ -36,9 +34,6 @@ export class RatetypeUpdateComponent implements OnInit {
   update() {
     console.log(this.rateTypeData)
     this.rest.updateRateType(this.rateTypeData).subscribe((result) => {
-      // this.rateTypeData = {
-      //   id_Rate_Type: 0, booking_Time: '', amount: 0
-      // }
       Swal.fire(
         'Good job!',
         'RateType sucessfully updated!',
@@ -50,7 +45,6 @@ export class RatetypeUpdateComponent implements OnInit {
         title: 'Oops...',
         text: 'Something went wrong!',
       });
-      console.log(err);
     });
   }
 

@@ -51,12 +51,10 @@ import { ParkingTableLimonComponent } from './parking-table-limon/parking-table-
 import { ParkingTableGuanacasteComponent } from './parking-table-guanacaste/parking-table-guanacaste.component';
 import { AuthServiceService } from './auth-service.service';
 import { PrincipalClientComponent } from './principal-client/principal-client.component';
-import { PrincipalOperatorComponent } from './principal-operator/principal-operator.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import { ReservationListUserComponent } from './reservation-list-user/reservation-list-user.component';
 import { UpdateTicketComponent } from './update-ticket/update-ticket.component';
 import { UserVehicleClientComponent } from './user-vehicle-client/user-vehicle-client.component';
-import { ClientTableComponent } from './client-table/client-table.component';
 import { JwtInterceptorInterceptor } from './jwt-interceptor.interceptor';
 import { PerfilUserComponent } from './perfil-user/perfil-user.component';
 import { PerfilInformationUpdateComponent } from './perfil-information-update/perfil-information-update.component';
@@ -97,11 +95,9 @@ import { PerfilInformationUpdateComponent } from './perfil-information-update/pe
     ParkingTableLimonComponent,
     ParkingTableGuanacasteComponent,
     PrincipalClientComponent,
-    PrincipalOperatorComponent,
     ReservationListUserComponent,
     UpdateTicketComponent,
     UserVehicleClientComponent,
-    ClientTableComponent,
     PerfilUserComponent,
     PerfilInformationUpdateComponent,
   ],

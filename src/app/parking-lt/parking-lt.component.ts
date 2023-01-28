@@ -38,7 +38,6 @@ export class ParkingLTComponent implements OnInit, AfterViewInit {
   getParking() {
     const cookie: string = this.cookieService.get('token');
     this.rest.userGetParking(cookie).subscribe((data: any) => {
-      console.log(data);
       this.dataSource.data = data;
     });
   }

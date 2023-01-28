@@ -21,7 +21,6 @@ ngOnInit(): void {
     const cookie:string=this.cookieService.get('token')
     let idU = localStorage.getItem('idUsuario');
     this.rest.getUserEdit(idU,cookie).subscribe((data:any) => {
-      console.log(data);
       this.userPerfil= data;
       this.namePerfil=data.name
     });

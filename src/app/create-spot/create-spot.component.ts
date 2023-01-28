@@ -67,10 +67,7 @@ export class CreateSpotComponent implements OnInit {
   get() {
     this.restVehicle.getVehicles().subscribe((data: {}) => {
       this.vehicle = data;
-      console.log(data);
-      console.log(this.vehicle);
     });
 
-    console.log(this.vehicle);
   }
 }

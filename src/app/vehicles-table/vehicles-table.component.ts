@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
-import { HomeServiceService } from '../services/home-service.service';
-
 import { AfterViewInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
@@ -31,11 +29,8 @@ export class VehiclesTableComponent implements OnInit,AfterViewInit {
   }
 
   get(){
-   // this.vehicle= [];
-    this.rest.getVehicles().subscribe((data:any)=>{
-      console.log(data);
+    this.rest.getVehicles().subscribe((data:any)=>{    
       this.dataSource.data=data;
-    //  this.vehicle=this.arrayRemove(this.vehicle,this.vehicle[0]);
     });
   }
   arrayRemove(arr:any, value:any) {
@@ -67,11 +62,9 @@ export class VehiclesTableComponent implements OnInit,AfterViewInit {
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.isConfirmed) {
-  
-        console.log(id)
+
         this.rest.deleteVehicle(id).subscribe(
         (data) =>{
-          console.log(data);
           this.ngOnInit();
         }
       ); 

@@ -33,7 +33,6 @@ export class RatetypeCreateComponent implements OnInit {
       return;
     }
 
-    console.log(this.rateTypeForm.value);
 
     this.rest.addRateType(this.rateTypeForm.value).subscribe((result) => {
       this.router.navigate(['/PrincipalAdmin']);
@@ -48,7 +47,6 @@ export class RatetypeCreateComponent implements OnInit {
         title: 'Oops...',
         text: 'Something went wrong!',
       });
-      console.log(err);
     });
   }
 

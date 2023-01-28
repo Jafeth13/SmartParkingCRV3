@@ -20,7 +20,6 @@ export class UpdateUserComponent implements OnInit {
 rut(){
   const cookie:string=this.cookieService.get('token')
   this.rest.getUserEdit(this.route.snapshot.params['id_User'],cookie).subscribe((data: {}) => {
-    console.log(data);
     this.userDataUpdate = data;
   });
 }
@@ -42,7 +41,6 @@ update(){
       title: 'Oops...',
       text: 'Something went wrong!',
     });
-    console.log(err);
   });
 }
 

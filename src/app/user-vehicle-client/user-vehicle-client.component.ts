@@ -27,9 +27,6 @@ export class UserVehicleClientComponent  {
   }
 
   addVehicle() {
-    
-    console.log(this.vehicleForm.value)
-
     this.restVehicle.addVehicle(this.vehicleForm.value).subscribe((result) => {
       this.vehicleForm = this.fb.group({
         idVehicle: [0, Validators.required],
@@ -51,7 +48,6 @@ export class UserVehicleClientComponent  {
         title: 'Oops...',
         text: 'Something went wrong!',
       });
-      console.log(err);
     });
   }
 }
