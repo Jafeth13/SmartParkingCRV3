@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { HomeServiceService } from '../services/home-service.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { RateServiceService } from '../services/rate-service.service';
 
 @Component({
   selector: 'app-ratetype-update',
@@ -13,7 +14,7 @@ export class RatetypeUpdateComponent implements OnInit {
 
   ratetypeForm: FormGroup;
 
-  constructor(private fb: FormBuilder, public rest: HomeServiceService, private route: ActivatedRoute, private router: Router) {
+  constructor(private fb: FormBuilder, public rest: RateServiceService, private route: ActivatedRoute, private router: Router) {
     this.ratetypeForm = this.fb.group({
       booking_Time: ['', Validators.required],
       amount: ['', Validators.required]

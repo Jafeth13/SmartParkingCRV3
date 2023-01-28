@@ -2,6 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MyReservationSService } from '../my-reservation-s.service';
 import { HomeServiceService } from '../services/home-service.service';
+
+import { AfterViewInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
+import { TicketServiceService } from '../services/ticket-service.service';
 @Component({
   selector: 'app-reservation-list-user',
   templateUrl: './reservation-list-user.component.html',
@@ -10,7 +15,11 @@ import { HomeServiceService } from '../services/home-service.service';
 export class ReservationListUserComponent implements OnInit {
   item:any=localStorage.getItem("Smart ParkingLot")!;
   userId:any
-  constructor(public rest:HomeServiceService,private route:ActivatedRoute,private router:Router) { }
+  dataSource = new MatTableDataSource();
+  @ViewChild(MatPaginator) paginator: any = MatPaginator;
+  displayedColumns: string[] = ['ParkingLot', 'User', 'RateType', 'Spot', 'StartDay', 'EndDay','action'];
+
+  constructor(public rest:TicketServiceService,private route:ActivatedRoute,private router:Router) { }
   reservations:any=[];
   ngOnInit(): void {
    
@@ -24,9 +33,9 @@ export class ReservationListUserComponent implements OnInit {
   getReservation(){
     let idU = localStorage.getItem('idUsuario');
     this.reservations= [];
-    this.rest.ReservationClient(idU).subscribe((data:{})=>{
+    this.rest.ReservationClient(idU).subscribe((data:any)=>{
       console.log(data);
-      this.reservations=data;
+      this.dataSource.data=data;
     });
   }
 
@@ -39,24 +48,15 @@ export class ReservationListUserComponent implements OnInit {
     );
   }
 
-  //getUserVehicles(){
- //   this.rest.getUserEmail(this.getKey().sub).subscribe((data:{})=>{
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+  }
 
- //     console.log(data);
-//this.userId=data;
-//this.getReservation(this.userId.id_User);
-      /*
-       var html='';
-       for(let i=0;i<this.vehicle.vehicles.length;i++){
-        html += '<mat-option value="'+ this.vehicle.vehicles[i].id_Vehicle+'">'+this.vehicle.vehicles[i].license_Plate+'</mat-option>'
-       
-      }
-      
-      (<HTMLSelectElement>document.getElementById("selectReservation")).innerHTML=html;
-  */
-//});
-    
- // }
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
 
   getKey(){
     return JSON.parse(atob(this.item.split('.',3)[1]));

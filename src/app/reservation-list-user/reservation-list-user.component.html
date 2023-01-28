@@ -1,80 +1,93 @@
 <app-navbar> </app-navbar>
 
-<section>
-    <div class="container">
-        <div class="text-center">
-            <br>
-            <br>
-            <br>
-            <br>
-            <h2 class="section-heading text-uppercase">My reservations </h2>
-            <br>
-            <br>
-            <br>
-        </div>
-        <div class="row">
-            <div class="col-md-12 col-sm-12">
-                <div class="table-responsive">
+<div class="container">
+  <div class="text-center">
 
-                    <table id="ClientReservation-table" class="table table-bordered table-hover">
+    <h1 class="section-heading text-uppercase">My reservations</h1>
 
-                        <thead>
-                            <tr>
-                                <th>
-                                    Ticket Number
-                                </th>
-                                <th>
-                                    Parking Lot
-                                </th>
-                                <th>
-                                    Spot Number
-                                </th>
-                                <th>
-                                    Client
-                                </th>
-                                <th>
-                                    Rate
-                                </th>
-                                <th>
-                                    StartDay
-                                </th>
-                                <th>
-                                    EndDay
-                                </th>
-                                <th>
-                                    Actions
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody id="UserReservation-tbody">
-                            <tr *ngFor="let s of reservations">
-                                <td scope="row">{{s.idTicket}} </td>
-                                <td scope="row">{{s.parkingLot.name}} </td>
-                                <td scope="row">{{s.spot.number}} </td>
-                                <td scope="row">{{s.user.name}} </td>
-                                <td scope="row">{{s.rateType.amount}} </td>
-                                <td scope="row">{{s.starDay}} </td>
-                                <td scope="row">{{s.endDay}} </td>
-                                <td>
-                                    <button mat-fab color="primary" routerLink="/UpdateReservation/{{s.idTicket}}"
-                                        aria-label="Example icon button with a delete icon">
-                                        <mat-icon>update</mat-icon>
-                                    </button>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Search</mat-label>
+      <input matInput placeholder="Ingresa datos" (keyup)="applyFilter($event)" />
+    </mat-form-field>
+  </div>
+  <BR>
 
-                                    <button mat-fab color="warn" (click)="delete(s.idTicket)"
-                                        aria-label="Example icon button with a delete icon">
-                                        <mat-icon>delete</mat-icon>
-                                    </button>
+  <div class="centrarTable">
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource">
+        <!-- Name Column -->
+        <ng-container matColumnDef="ParkingLot">
+          <th mat-header-cell *matHeaderCellDef><b> Name</b></th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.parkingLot.name }}</td>
+        </ng-container>
+
+        <!-- Descripcion Column -->
+        <ng-container matColumnDef="User">
+          <th mat-header-cell *matHeaderCellDef><b>User</b></th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.user.name }}
+          </td>
+        </ng-container>
 
 
+        <!-- action Column -->
+        <ng-container matColumnDef="RateType">
+          <th mat-header-cell *matHeaderCellDef><b>Amount</b></th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.rateType.amount }}
+             
+          </td>
+        </ng-container>
+              <!-- action Column -->
+              <ng-container matColumnDef="Spot">
+                <th mat-header-cell *matHeaderCellDef><b>Spot number</b></th>
+                <td mat-cell *matCellDef="let element">
+                 
+                 {{ element.spot.number }}  
+                </td>
+        </ng-container>
+                    <!-- action Column -->
+        <ng-container matColumnDef="StartDay">
+          <th mat-header-cell *matHeaderCellDef><b>Start Day</b></th>
+          <td mat-cell *matCellDef="let element">
+           {{element.starDay}}
+             
+          </td>
+        </ng-container>
 
-                                </td>
-                            </tr>
-                        </tbody>
+                  <!-- action Column -->
+                  <ng-container matColumnDef="EndDay">
+                    <th mat-header-cell *matHeaderCellDef><b>End day</b></th>
+                    <td mat-cell *matCellDef="let element">
+                     {{element.endDay}}
+                       
+                    </td>
+                  </ng-container>
+             
+                    <!-- action Column -->
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef><b>Reservation</b></th>
+          <td mat-cell *matCellDef="let element">
 
-                    </table>
-                </div>
-            </div>
-        </div>
+            <button mat-fab color="primary" routerLink="/UpdateReservation/{{element.idTicket}}"
+            aria-label="Example icon button with a delete icon">
+            <mat-icon>update</mat-icon>
+        </button>
+
+        <button mat-fab color="warn" (click)="delete(element.idTicket)"
+            aria-label="Example icon button with a delete icon">
+            <mat-icon>delete</mat-icon>
+        </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements">
+      </mat-paginator>
     </div>
-</section>
+  </div>
+</div>

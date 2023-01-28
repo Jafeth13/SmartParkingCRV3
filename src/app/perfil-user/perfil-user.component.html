@@ -1,4 +1,4 @@
-<app-navbar> </app-navbar>
+<!-- <app-navbar> </app-navbar>
 
 <div class="container">
   <div class="abs-center">
@@ -32,26 +32,16 @@
         <input [(ngModel)]="userPerfil.email" name="email" autocomplete="off" type="email" disabled="true"
           placeholder="Email" class="form-control mt-17" />
       </div>
-
-
       <div class="flex-conteiner">
-
         <div class="m-2">
-          <!-- <button type="submit" class="btn btn-danger" routerLink="/PrincipalAdmin">
-                        Return
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="bi bi-arrow-left" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd"
-                                d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
-                        </svg>
-                    </button> -->
         </div>
       </div>
     </form>
+  </div>
 
-    <div>
-      <div class="row">
-        <div class="col-sm">
+  </div>
+    <div class="row">
+        <div class="col-lg-4 col-sm-6 mb-4">
           <div class="portfolio-item">
             <a class="portfolio-link" data-bs-toggle="modal" routerLink="/VehicleClientUser">
               <div class="portfolio-hover">
@@ -67,7 +57,7 @@
           </div>
         </div>
 
-        <div class="col-sm">
+        <div class="col-lg-4 col-sm-6 mb-4">
           <div class="portfolio-item">
             <a class="portfolio-link" data-bs-toggle="modal" routerLink="/ReservationClient">
               <div class="portfolio-hover">
@@ -81,11 +71,78 @@
               <div class="portfolio-caption-heading">Reservation</div>
             </div>
           </div>
+        </div> 
+      </div>
+</div> -->
+<app-navbar></app-navbar>
+
+
+<section class="page-section" id="portfolio">
+  <div class="container">
+    
+    <div class="text-center">
+      <h2 class="section-heading text-uppercase">Profile</h2>
+      <h3 class="section-subheading text-muted">
+        Welcome {{namePerfil}}
+      </h3>
+    </div>
+    <div class="row">
+
+      <div class="col-lg-4 col-sm-6 mb-4">
+        <div class="portfolio-item">
+          <a class="portfolio-link" data-bs-toggle="modal" routerLink="/VehicleClientUser">
+            <div class="portfolio-hover">
+              <div class="portfolio-hover-content">
+                <i class="fas fa-plus fa-3x"></i>
+              </div>
+            </div>
+            <img class="img-fluid" src="assets/car.jpg" alt="..." />
+          </a>
+          <div class="portfolio-caption">
+            <div class="portfolio-caption-heading">Vehicles</div>
+          </div>
         </div>
       </div>
+
+
+      <div class="col-lg-4 col-sm-6 mb-4">
+        <div class="portfolio-item">
+          <a class="portfolio-link" data-bs-toggle="modal" routerLink="/ReservationClient">
+            <div class="portfolio-hover">
+              <div class="portfolio-hover-content">
+                <i class="fas fa-plus fa-3x"></i>
+              </div>
+            </div>
+            <img class="img-fluid" src="assets/reserved.jpg" alt="..." />
+          </a>
+          <div class="portfolio-caption">
+            <div class="portfolio-caption-heading">Reservation</div>
+          </div>
+        </div>
+      </div> 
+
+
+      <div class="col-lg-4 col-sm-6 mb-4">
+        <div class="portfolio-item">
+          <a class="portfolio-link" data-bs-toggle="modal" routerLink="/perfil-update">
+            <div class="portfolio-hover">
+              <div class="portfolio-hover-content">
+                <i class="fas fa-plus fa-3x"></i>
+              </div>
+            </div>
+            <img class="img-fluid" src="assets/perfil.jpg" alt="..." />
+          </a>
+          <div class="portfolio-caption">
+            <div class="portfolio-caption-heading">Profile</div>
+          </div>
+        </div>
+      </div> 
+
+
+
+
     </div>
-
+      
   </div>
 
-  </div>
-</div>
+</section>

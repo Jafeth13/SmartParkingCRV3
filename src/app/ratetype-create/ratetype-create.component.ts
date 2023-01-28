@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { HomeServiceService } from '../services/home-service.service';
+import { RateServiceService } from '../services/rate-service.service';
 
 @Component({
   selector: 'app-ratetype-create',
@@ -14,7 +15,7 @@ export class RatetypeCreateComponent implements OnInit {
   rateTypeForm: FormGroup;
   errorMessage: any;
 
-  constructor(private fb: FormBuilder,public rest:HomeServiceService,private route:ActivatedRoute,private router:Router) { 
+  constructor(private fb: FormBuilder,public rest:RateServiceService,private route:ActivatedRoute,private router:Router) { 
 
     this.rateTypeForm = this.fb.group({
       id: 0,

@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { HomeServiceService } from '../services/home-service.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { VehicleServiceService } from '../services/vehicle-service.service';
 
 @Component({
   selector: 'app-vehicles-create',
@@ -11,14 +12,16 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class VehiclesCreateComponent {
   vehicleForm: FormGroup;
-  constructor(public rest: HomeServiceService, private fb: FormBuilder, private route: ActivatedRoute, private router: Router) {
+  constructor(public rest: VehicleServiceService, private fb: FormBuilder, private route: ActivatedRoute, private router: Router) {
     this.vehicleForm = this.fb.group({
       idVehicle: [0, Validators.required],
       licensePlate: ['', Validators.required],
       color: ['', Validators.required],
       weight: ['', Validators.required],
       brand: ['', Validators.required],
-      vehicleType: { idType: 0 }
+      user:this.fb.group ({ email:''}),
+      type: { idType: 1 },
+      
     })
   }
 
@@ -33,7 +36,8 @@ export class VehiclesCreateComponent {
         color: ['', Validators.required],
         weight: ['', Validators.required],
         brand: ['', Validators.required],
-        vehicleType: { idType: 0 }
+        type: { idType: 0 },
+        user: {email:''}
       })
       Swal.fire(
         'Good job!',

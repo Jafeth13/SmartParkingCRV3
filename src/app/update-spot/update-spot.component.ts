@@ -4,6 +4,8 @@ import { CookieService } from 'ngx-cookie-service';
 import Swal from 'sweetalert2';
 import { HomeServiceService } from '../services/home-service.service';
 import { ParkingServiceService } from '../services/parking-service.service';
+import { SpotServiceService } from '../services/spot-service.service';
+import { VehicleServiceService } from '../services/vehicle-service.service';
 @Component({
   selector: 'app-update-spot',
   templateUrl: './update-spot.component.html',
@@ -11,7 +13,10 @@ import { ParkingServiceService } from '../services/parking-service.service';
 })
 export class UpdateSpotComponent implements OnInit {
 
-  constructor(public restParking:ParkingServiceService,private cookieService:CookieService,public rest:HomeServiceService,private route:ActivatedRoute,private router:Router) { }
+  constructor(public restParking:ParkingServiceService,private cookieService:CookieService,
+    private restSpot:SpotServiceService,
+    public rest:HomeServiceService,private route:ActivatedRoute,private router:Router,
+    private restVehicle:VehicleServiceService) { }
 @Input()spotEdit:any;
 parkingSelect:any;
 vehicle:any;
@@ -23,7 +28,7 @@ vehicle:any;
 
   rut(){
     console.log(this.route.snapshot.params['id_Spot'])
-    this.rest.getSpotsById(this.route.snapshot.params['id_Spot']).subscribe((data: {}) => {
+    this.restSpot.getSpotsById(this.route.snapshot.params['id_Spot']).subscribe((data: {}) => {
       console.log(data);
       this.spotEdit = data;
     });
@@ -37,7 +42,7 @@ vehicle:any;
     });
    }
    updateSpot(){
-    this.rest.updateSpot(this.spotEdit).subscribe((result) => {
+    this.restSpot.updateSpot(this.spotEdit).subscribe((result) => {
       this.spotEdit={
         id_Spot:0,number:0,type:'',status:'',vehicle:{id_Vehicle:0},parking_lot:{id_Parking_Lot:0}
       }
@@ -58,7 +63,7 @@ vehicle:any;
 
    get(){
     this.vehicle= [];
-    this.rest.getVehicles().subscribe((data:{})=>{
+    this.restVehicle.getVehicles().subscribe((data:{})=>{
       console.log(data);
       this.vehicle=data;
     });

@@ -1,0 +1,40 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <div class="abs-center">
+      <div class="flex-conteiner">
+      <form action="#" class="border rounded p-2 form">
+        <h1 class="text-center display-1">
+          Profile
+  
+        </h1>
+        <div class="mt-2">
+          <input [(ngModel)]="userPerfil.identification" name="identification" placeholder="Identification"
+            disabled="true" class="form-control mt-17" />
+        </div>
+  
+        <div class="mt-2">
+          <input [(ngModel)]="userPerfil.name" name="name" placeholder="Name" disabled="true"
+            class="form-control mt-17" />
+        </div>
+  
+        <div class="mt-2">
+          <input [(ngModel)]="userPerfil.lastName" name="lastName" placeholder="Last name" disabled="true"
+            class="form-control mt-17" />
+        </div>
+  
+        <div class="mt-2">
+          <input [(ngModel)]="userPerfil.telNumber" name="telNumber" disabled="true" placeholder="Telephone"
+            class="form-control mt-17" />
+        </div>
+  
+        <div class="mt-2">
+          <input [(ngModel)]="userPerfil.email" name="email" autocomplete="off" type="email" disabled="true"
+            placeholder="Email" class="form-control mt-17" />
+        </div>
+        <div class="flex-conteiner">
+          <div class="m-2">
+          </div>
+        </div>
+      </form>
+    </div>
+  

@@ -6,6 +6,7 @@ import { HomeServiceService } from '../services/home-service.service';
 import { AfterViewInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { VehicleServiceService } from '../services/vehicle-service.service';
 
 @Component({
   selector: 'app-vehicles-table',
@@ -19,7 +20,7 @@ export class VehiclesTableComponent implements OnInit,AfterViewInit {
   userData: any;
  displayedColumns: string[] = ['licensePlate', 'color', 'weight', 'brand','action'];
   @ViewChild(MatPaginator) paginator: any = MatPaginator;
-  constructor(public rest:HomeServiceService,private route:ActivatedRoute,private router:Router) { }
+  constructor(public rest:VehicleServiceService,private route:ActivatedRoute,private router:Router) { }
 
   ngOnInit(): void {
     this.get();

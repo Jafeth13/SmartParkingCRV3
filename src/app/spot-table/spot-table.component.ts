@@ -6,6 +6,7 @@ import { HomeServiceService } from '../services/home-service.service';
 import { AfterViewInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { SpotServiceService } from '../services/spot-service.service';
 
 @Component({
   selector: 'app-spot-table',
@@ -20,7 +21,7 @@ export class SpotTableComponent implements OnInit,AfterViewInit {
   @ViewChild(MatPaginator) paginator: any = MatPaginator;
 spot:any;
 tempSpot:any;
-  constructor(public rest:HomeServiceService,private route:ActivatedRoute,private router:Router) { }
+  constructor(public rest:SpotServiceService,private route:ActivatedRoute,private router:Router) { }
 
   ngOnInit(): void {
     this.getSpotss();

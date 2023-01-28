@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { HomeServiceService } from '../services/home-service.service';
+import { VehicleServiceService } from '../services/vehicle-service.service';
 
 @Component({
   selector: 'app-vehicles-update',
@@ -10,7 +11,7 @@ import { HomeServiceService } from '../services/home-service.service';
 })
 export class VehiclesUpdateComponent implements OnInit {
 
-  constructor(public rest:HomeServiceService,private route:ActivatedRoute,private router:Router) { }
+  constructor(public rest:VehicleServiceService,private route:ActivatedRoute,private router:Router) { }
   
   @Input()vehicleData:any;
   

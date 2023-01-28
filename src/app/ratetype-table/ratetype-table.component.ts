@@ -7,6 +7,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { RateTypeServiceService } from '../services/rate-type-service.service';
 import { CookieService } from 'ngx-cookie-service';
+import { RateServiceService } from '../services/rate-service.service';
 
 @Component({
   selector: 'app-ratetype-table',
@@ -23,7 +24,7 @@ export class RatetypeTableComponent implements OnInit, AfterViewInit {
 
   constructor(
     public rest: RateTypeServiceService,
-    public restHome:HomeServiceService,
+    public restHome:RateServiceService,
     private route: ActivatedRoute,
     private router: Router,
     private cookieService: CookieService,

@@ -3,6 +3,7 @@ import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { HomeServiceService } from '../services/home-service.service';
+import { TicketServiceService } from '../services/ticket-service.service';
 
 @Component({
   selector: 'app-update-ticket',
@@ -12,7 +13,7 @@ import { HomeServiceService } from '../services/home-service.service';
 export class UpdateTicketComponent implements OnInit {
 date:any
 hour:any
-  constructor(public rest:HomeServiceService,private route:ActivatedRoute,private router:Router) { }
+  constructor(public rest:TicketServiceService,private route:ActivatedRoute,private router:Router) { }
   @Input()TicketData:any
   ngOnInit(): void {
     

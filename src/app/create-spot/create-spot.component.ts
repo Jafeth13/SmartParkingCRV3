@@ -4,6 +4,8 @@ import { CookieService } from 'ngx-cookie-service';
 import Swal from 'sweetalert2';
 import { HomeServiceService } from '../services/home-service.service';
 import { ParkingServiceService } from '../services/parking-service.service';
+import { SpotServiceService } from '../services/spot-service.service';
+import { VehicleServiceService } from '../services/vehicle-service.service';
 @Component({
   selector: 'app-create-spot',
   templateUrl: './create-spot.component.html',
@@ -15,7 +17,9 @@ export class CreateSpotComponent implements OnInit {
     private cookieService: CookieService,
     public rest: HomeServiceService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private restSpot:SpotServiceService,
+    private restVehicle:VehicleServiceService
   ) {}
   @Input() SpotData = {
     id_Spot: 0,
@@ -32,7 +36,7 @@ export class CreateSpotComponent implements OnInit {
   parkingSelectT: any;
   vehicle: any;
   addUSpot() {
-    this.rest.addSpot(this.SpotData).subscribe(
+    this.restSpot.addSpot(this.SpotData).subscribe(
       (result) => {
         this.SpotData = {
           id_Spot: 0,
@@ -61,7 +65,7 @@ export class CreateSpotComponent implements OnInit {
   }
 
   get() {
-    this.rest.getVehicles().subscribe((data: {}) => {
+    this.restVehicle.getVehicles().subscribe((data: {}) => {
       this.vehicle = data;
       console.log(data);
       console.log(this.vehicle);

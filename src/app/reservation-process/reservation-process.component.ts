@@ -12,6 +12,10 @@ import { ThisReceiver } from '@angular/compiler';
 import { ParkingServiceService } from '../services/parking-service.service';
 import { CookieService } from 'ngx-cookie-service';
 import { RateTypeServiceService } from '../services/rate-type-service.service';
+import { TicketServiceService } from '../services/ticket-service.service';
+import { RateServiceService } from '../services/rate-service.service';
+import { SpotServiceService } from '../services/spot-service.service';
+import { VehicleServiceService } from '../services/vehicle-service.service';
 @Component({
   selector: 'app-reservation-process',
   templateUrl: './reservation-process.component.html',
@@ -53,7 +57,9 @@ export class ReservationProcessComponent implements OnInit {
   //----------------------------------------------------------------------------------------------------
 
 
-  constructor(public restParking: ParkingServiceService, public restRateType: RateTypeServiceService, private cookieService: CookieService, public restUser: UserServiceService, public rest: HomeServiceService, private auth: AuthServiceService, private route: ActivatedRoute, private router: Router, private _formBuilder: FormBuilder) { }
+  constructor(public restParking: ParkingServiceService,private restSpot:SpotServiceService, 
+    private restVehicle:VehicleServiceService,
+    public restRateType: RateTypeServiceService, private cookieService: CookieService, public restUser: UserServiceService, public rest: HomeServiceService, private auth: AuthServiceService, private route: ActivatedRoute, private router: Router, private _formBuilder: FormBuilder,private restTicket:TicketServiceService,private restRate:RateServiceService) { }
 
   ngOnInit(): void {
     this.rut();
@@ -79,7 +85,7 @@ export class ReservationProcessComponent implements OnInit {
     };
     console.log(this.TicketData)
 
-    this.rest.ReservationTicket(this.TicketData).subscribe((result) => {
+    this.restTicket.ReservationTicket(this.TicketData).subscribe((result) => {
       Swal.fire(
         'Good job!',
         'The reservation is success !',
@@ -124,7 +130,7 @@ export class ReservationProcessComponent implements OnInit {
 
   rut() {
     this.parkingSpotsData = [];
-    this.rest.getSpotsByParking(this.route.snapshot.params['id_Parking_Lot']).subscribe((data: {}) => {
+    this.restSpot.getSpotsByParking(this.route.snapshot.params['id_Parking_Lot']).subscribe((data: {}) => {
       console.log(data);
       this.parkingSpotsData = data;
     });
@@ -133,7 +139,7 @@ export class ReservationProcessComponent implements OnInit {
 
   //-------------------------------Get methods for each information of the ticket--------------------------------------------
   rutSpot() {
-    this.rest.getSpotEdit(this.arraySelectedSpots[0]).subscribe((data: {}) => {
+    this.restSpot.getSpotEdit(this.arraySelectedSpots[0]).subscribe((data: {}) => {
       console.log(data);
       this.spotEdit = data;
       this.spotNumber = this.spotEdit.number;
@@ -142,7 +148,7 @@ export class ReservationProcessComponent implements OnInit {
   }
   rutRateType() {
     console.log(this.rateId)
-    this.rest.getRateTypeById(this.rateId).subscribe((data: any) => {
+    this.restRate.getRateTypeById(this.rateId).subscribe((data: any) => {
       console.log(data);
       this.rateTypeInfo = data;
       this.rateTypeIn = data.bookingTime;
@@ -180,7 +186,7 @@ export class ReservationProcessComponent implements OnInit {
     // });
 
 
-    this.rest.getVehicleByLicense(this.vehiId).subscribe((data: any) => {
+    this.restVehicle.getVehicleByLicense(this.vehiId).subscribe((data: any) => {
       console.log(data);
       this.vehicleData = data;
       this.vehicleLicense = data.licensePlate;

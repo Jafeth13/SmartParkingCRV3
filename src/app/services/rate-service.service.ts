@@ -4,9 +4,8 @@ import { catchError, Observable, of, tap } from 'rxjs';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { Token } from '@angular/compiler';
-
-const endpoint = 'https://apiproyectosmarttickets.azurewebsites.net/api/';
-const VehicleEndpoint='https://localhost:7186/api/vehicle/update';
+const updateRate = 'https://localhost:7186/rate/Update';
+const rateTypeEndpoint='http://localhost:8097/api/rateType';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -16,34 +15,40 @@ const httpOptions = {
   })
 };
 
-
-
 @Injectable({
   providedIn: 'root'
 })
-
-export class HomeServiceService {
+export class RateServiceService {
 
   constructor(private http: HttpClient,private cookieService:CookieService) { }
 
-  /*********************************************************************LOGIN*******************************************************************/
+  addRateType(rateType :any){
+    return this.http.post('https://localhost:7186/rate/Insert', rateType, httpOptions);   
+  }
 
-  login(loginRequest: any){
-    return this.http.post('https://localhost:7186/api/user/Verify',loginRequest,httpOptions).pipe(
-      tap((response: any) => {
-        //httpOptions.headers = httpOptions.headers.set('Authorization', " Bearer "+response.jwtToken);  
-        console.log(response)   
-        this.cookieService.set('token',response.token);
-        localStorage.setItem('idRole', response.usuario.role.idRole+ '');
-        localStorage.setItem('name', response.usuario.name+ '');
-        localStorage.setItem('usuario', response.token);
-        localStorage.setItem('idUsuario', response.usuario.idUser+ '');
-        
-        localStorage.setItem('nameRole', response.usuario.role.name+ '');
-      })
+  deleteRateType(id: number): Observable<any>{
+    return this.http.delete(rateTypeEndpoint+'/delete/'+id, httpOptions).pipe(
+      catchError(this.handleError('deleteRateType'))
     );
   }
 
+  updateRateType(updateRateType: any){
+    return this.http.put(updateRate,updateRateType,httpOptions);
+  }
+
+  getRateTypeById(id:any):Observable<any>{
+    return  this.http.get('https://localhost:7186/rate/GetById?id='+id, httpOptions);   
+  }
+
+  
+  getAllRateTypes(token:any):Observable<any>{
+    let httpHeaders=new HttpHeaders().set("Authorization","bearer "+token);
+    return  this.http.get('https://localhost:7186/rate/Get', {
+      headers:httpHeaders
+    }).pipe(
+      catchError(this.handleError('GetAllRateTypesError'))
+    );
+  }
 
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
@@ -58,4 +63,5 @@ export class HomeServiceService {
       return of(result as T);
     };
   }
+
 }

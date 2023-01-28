@@ -4,7 +4,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthServiceService } from '../auth-service.service';
 import Swal from 'sweetalert2'
 import { HomeServiceService } from '../services/home-service.service';
-import { RoleCreateComponent } from '../role-create/role-create.component';
 import { UserServiceService } from '../services/user-service.service';
 import { CookieService } from 'ngx-cookie-service';
 

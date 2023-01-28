@@ -4,9 +4,7 @@ import { catchError, Observable, of, tap } from 'rxjs';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { Token } from '@angular/compiler';
-
-const endpoint = 'https://apiproyectosmarttickets.azurewebsites.net/api/';
-const VehicleEndpoint='https://localhost:7186/api/vehicle/update';
+const SpotEndpoint='http://localhost:8097/api/spot';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -21,29 +19,40 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
-
-export class HomeServiceService {
+export class SpotServiceService {
 
   constructor(private http: HttpClient,private cookieService:CookieService) { }
 
-  /*********************************************************************LOGIN*******************************************************************/
-
-  login(loginRequest: any){
-    return this.http.post('https://localhost:7186/api/user/Verify',loginRequest,httpOptions).pipe(
-      tap((response: any) => {
-        //httpOptions.headers = httpOptions.headers.set('Authorization', " Bearer "+response.jwtToken);  
-        console.log(response)   
-        this.cookieService.set('token',response.token);
-        localStorage.setItem('idRole', response.usuario.role.idRole+ '');
-        localStorage.setItem('name', response.usuario.name+ '');
-        localStorage.setItem('usuario', response.token);
-        localStorage.setItem('idUsuario', response.usuario.idUser+ '');
-        
-        localStorage.setItem('nameRole', response.usuario.role.name+ '');
-      })
+  getSpots():Observable<any>{
+    return  this.http.get('https://localhost:7186/spot/Get', httpOptions).pipe(
+      catchError(this.handleError('GetAllSpotsError'))
     );
   }
-
+  deleteSpot(id:number){
+    return this.http.delete(SpotEndpoint+'/delete/'+id, httpOptions).pipe(
+      catchError(this.handleError('delete spot'))
+    );
+  }
+  
+  getSpotEdit(id:any):Observable<any>{
+    return  this.http.get('https://localhost:7186/spot/GetById?idSpot='+id, httpOptions);  
+  }
+  
+  addSpot(SpotData:any){
+    return this.http.post('https://localhost:7186/spot/Insert', SpotData, httpOptions); 
+  }
+  
+  updateSpot(Spot:any){
+    return this.http.put(SpotEndpoint+'/update',Spot,httpOptions);
+  }
+  
+  getSpotsById(id:any):Observable<any>{
+    return  this.http.get('https://localhost:7186/spot/GetById?idSpot='+id, httpOptions);   
+  }
+  
+  getSpotsByParking(id:any):Observable<any>{
+    return  this.http.get('https://localhost:7186/spot/GetByParkingLot?id='+id, httpOptions);   
+  }
 
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
@@ -58,4 +67,5 @@ export class HomeServiceService {
       return of(result as T);
     };
   }
+
 }

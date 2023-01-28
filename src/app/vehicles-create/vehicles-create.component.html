@@ -26,16 +26,21 @@
                     class="form-control mt-17" />
             </div>
 
+            <div class="mt-2">
+                <input formControlName="user.email"  placeholder="email"
+                    class="form-control mt-17" />
+            </div>
+
         
             <div class="mt-2">
                 <!-- decirle a yogurd  formControlName="province"  desaparese el select -->
-                <select formControlName="vehicleType" name="type" class="form-select" aria-label="Default select example">
+                <select formControlName="type.idType" name="type" class="form-select" aria-label="Default select example">
                     <option selected>Open this select menu</option>
-                    <option value=0>Vehiculo Particular</option>
-                    <option value=1>Vehiculo Carga</option>
-                    <option value=2>Motocicleta</option>
-                    <option value=3>Bicicleta</option>
-                    <option value=4>Vehiculo Pesado</option>
+                    <option value=1>Vehiculo Particular</option>
+                    <option value=2>Vehiculo Carga</option>
+                    <option value=3>Motocicleta</option>
+                    <option value=4>Bicicleta</option>
+                    <option value=5>Vehiculo Pesado</option>
                 </select>
             </div>
 

@@ -7,6 +7,7 @@ import { HomeServiceService } from '../services/home-service.service';
 import { AfterViewInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { TicketServiceService } from '../services/ticket-service.service';
 @Component({
   selector: 'app-my-reservation',
   templateUrl: './my-reservation.component.html',
@@ -16,7 +17,7 @@ export class MyReservationComponent implements OnInit {
   reservations:any=[];
   dataSource = new MatTableDataSource();
   @ViewChild(MatPaginator) paginator: any = MatPaginator;
-  constructor(public rest:HomeServiceService,private route:ActivatedRoute,private router:Router) {
+  constructor(public rest:TicketServiceService,private route:ActivatedRoute,private router:Router) {
     
    }
   displayedColumns: string[] = ['ParkingLot', 'User', 'RateType', 'Spot', 'StartDay', 'EndDay','action'];
